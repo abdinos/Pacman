@@ -1,6 +1,6 @@
-package PhysicsEngine;
+package src.main.java.PhysicsEngine;
 
-import PhysicsEngine.Entity;
+import src.main.java.PhysicsEngine.Entity;
 
 import java.awt.*;
 

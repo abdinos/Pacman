@@ -1,7 +1,9 @@
-import PhysicsEngine.Directions;
-import PhysicsEngine.Entity;
-import PhysicsEngine.Hitbox;
-import PhysicsEngine.Mouvements;
+package src.test.java;
+
+import src.main.java.PhysicsEngine.Directions;
+import src.main.java.PhysicsEngine.Entity;
+import src.main.java. PhysicsEngine.Hitbox;
+import src.main.java.PhysicsEngine.Mouvements;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

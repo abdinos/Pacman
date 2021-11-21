@@ -1,4 +1,4 @@
-package PhysicsEngine;
+package src.main.java.PhysicsEngine;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
