@@ -1,38 +1,33 @@
-import PhysicsEngine.Directions;
-import PhysicsEngine.Entity;
-import PhysicsEngine.Mouvements;
+import gameengine.physicsengine.Directions;
+import gameengine.physicsengine.Entity;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class DirectionTest {
-    private Entity testEntity1 = new Entity(4, 3, 40,30);
+    private Entity testEntity1 = new Entity(4, 3, 40,20,15,null);
 
 
     @Test
     public void rightMovementTest() {
-        Mouvements right = new Mouvements(testEntity1, Directions.RIGHT);
-        right.move();
-        assertEquals(44, testEntity1.getX());
+        testEntity1.moveToWantedDirection(testEntity1.getWantedDirection(Directions.RIGHT));
+        assertEquals(19, testEntity1.getX());
 
     }
     @Test
     public void leftMovementTest() {
-        Mouvements left = new Mouvements(testEntity1, Directions.LEFT);
-        left.move();
-        assertEquals(-36, testEntity1.getX());
+        testEntity1.moveToWantedDirection(testEntity1.getWantedDirection(Directions.LEFT));
+        assertEquals(-11, testEntity1.getX());
     }
     @Test
     public void upMovementTest() {
-        Mouvements up = new Mouvements(testEntity1, Directions.UP);
-        up.move();
-        assertEquals(43, testEntity1.getY());
+        testEntity1.moveToWantedDirection(testEntity1.getWantedDirection(Directions.UP));
+        assertEquals(18, testEntity1.getY());
     }
     @Test
     public void downMovementTest() {
-        Mouvements down = new Mouvements(testEntity1, Directions.DOWN);
-        down.move();
-        assertEquals(-37, testEntity1.getY());
+        testEntity1.moveToWantedDirection(testEntity1.getWantedDirection(Directions.DOWN));
+        assertEquals(-12, testEntity1.getY());
     }
 
 
