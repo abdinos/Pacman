@@ -1,21 +1,33 @@
 import PhysicsEngine.Directions;
 import PhysicsEngine.Entity;
-import PhysicsEngine.Hitbox;
-import PhysicsEngine.Mouvements;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class CollisionTest {
-    Entity entity1 = new Entity(4,3,15,30);
-    Entity entity2 = new Entity(23,23,15,50);
-    Entity entity3 = new Entity(50,40,20,30);
+    Entity entity1 = new Entity(3,3,15,20,20,null);
+    Entity entity2 = new Entity(23,23,15,20,20,null);
+    Entity entity3 = new Entity(50,40,20,30,20,null);
 
     @Test
     public void iscollidingTest() {
-        Mouvements mouvements1 = new Mouvements(entity1, Directions.RIGHT);
-        Mouvements mouvements2 = new Mouvements(entity1, Directions.UP);
-        assertEquals(true,Hitbox.collisionDetecter(entity1,entity2));
+        entity1.moveToWantedDirection(entity1.getWantedDirection(Directions.RIGHT));
+        entity1.moveToWantedDirection(entity1.getWantedDirection(Directions.UP));
+        assertEquals(true,entity1.collisionDetecter(entity2));
+
+    }
+    @Test
+    public void isNotcollidingTest() {
+        entity1.moveToWantedDirection(entity1.getWantedDirection(Directions.LEFT));
+        entity1.moveToWantedDirection(entity1.getWantedDirection(Directions.RIGHT));
+        assertEquals(false,entity1.collisionDetecter(entity3));
+
+    }
+    @Test
+    public void isNotcollidingTest2() {
+        entity1.moveToWantedDirection(entity2.getWantedDirection(Directions.LEFT));
+        entity1.moveToWantedDirection(entity2.getWantedDirection(Directions.DOWN));
+        assertEquals(false,entity2.collisionDetecter(entity3));
 
     }
 
