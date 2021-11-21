@@ -1,5 +1,5 @@
-import PhysicsEngine.Directions;
-import PhysicsEngine.Entity;
+import gameengine.physicsengine.Directions;
+import gameengine.physicsengine.Entity;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

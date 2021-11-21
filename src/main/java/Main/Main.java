@@ -1,7 +1,7 @@
 package Main;
 
-import PhysicsEngine.Directions;;
-import PhysicsEngine.Entity;
+import gameengine.physicsengine.Directions;;
+import gameengine.physicsengine.Entity;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,7 +12,7 @@ public class Main {
         entity1.moveToWantedDirection(entity1.getWantedDirection(Directions.UP));
         System.out.println(entity1.toString());
         System.out.println(entity2.toString());
-        System.out.println(entity1.collisionDetecter(entity2));
+        System.out.println(entity1.collisionDetector(entity2));
 
     }
 }

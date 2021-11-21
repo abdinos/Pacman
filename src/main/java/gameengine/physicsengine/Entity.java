@@ -1,6 +1,4 @@
-package PhysicsEngine;
-
-import java.awt.*;
+package gameengine.physicsengine;
 
 
 public class Entity {
@@ -131,10 +129,14 @@ public class Entity {
                 break;
             default:
         }
+    }
+    public Entity newPosition(Directions direction){
+        this.moveToWantedDirection(direction);
+        return this;
 
     }
 
-    public boolean collisionDetecter(Entity collider) {
+    public boolean collisionDetector(Entity collider) {
         if (this.getX() < collider.getX() + collider.getWidth() &&
                 this.getX() + this.getWidth() > collider.getX() &&
                 this.getY() < collider.getY() + collider.getHeight() &&

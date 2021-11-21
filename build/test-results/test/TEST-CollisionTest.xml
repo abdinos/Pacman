@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="CollisionTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-11-21T18:12:49" hostname="DESKTOP-R5OEEGC" time="0.022">
+<testsuite name="CollisionTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-11-21T18:54:52" hostname="DESKTOP-R5OEEGC" time="0.024">
   <properties/>
-  <testcase name="iscollidingTest()" classname="CollisionTest" time="0.019"/>
+  <testcase name="iscollidingTest()" classname="CollisionTest" time="0.021"/>
   <testcase name="isNotcollidingTest2()" classname="CollisionTest" time="0.001"/>
   <testcase name="isNotcollidingTest()" classname="CollisionTest" time="0.001"/>
   <system-out><![CDATA[there's collision
