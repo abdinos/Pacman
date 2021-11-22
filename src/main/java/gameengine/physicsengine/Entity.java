@@ -2,59 +2,51 @@ package gameengine.physicsengine;
 
 
 public class Entity {
-    private double x;
-    private double y;
-    private double width;
-    private double height;
     private double velocity;
-    private Directions direction;
+    private Direction direction;
+    private Hitbox hitbox;
 
 
-    public Entity(double x, double y, double width, double height, double velocity, Directions direction) {
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
+    public Entity(double positionX, double positionY, double width, double height, double velocity, Direction direction) {
+
         this.velocity = velocity;
         this.direction = direction;
+        this.hitbox = new Hitbox((int)positionX,(int)positionY,width,height);
     }
 
 
     public Entity() {
-        this.x = 0;
-        this.y = 0;
-        this.width = 0;
-        this.height = 0;
         this.velocity = 0;
         this.direction = null;
+        this.hitbox = new Hitbox();
     }
 
     public double getWidth() {
-        return width;
+        return hitbox.getWidth();
     }
 
     public double getHeight() {
-        return height;
+        return hitbox.getHeight();
     }
 
-    public Directions getDirection() {
+    public Direction getDirection() {
         return direction;
     }
 
     public double getX() {
-        return x;
+        return hitbox.getX();
     }
 
     public void setX(double x) {
-        this.x = x;
+        hitbox.setX(x);
     }
 
     public double getY() {
-        return y;
+        return hitbox.getY();
     }
 
     public void setY(double y) {
-        this.y = y;
+        hitbox.setY(y);
     }
 
     public double getVelocity() {
@@ -63,37 +55,40 @@ public class Entity {
 
 
     public void setWidth(double width) {
-        this.width = width;
+        hitbox.setWidth(width);
     }
 
     public void setHeight(double height) {
-        this.height = height;
+        hitbox.setHeight(height);
     }
 
     public void setVelocity(double speed) {
         this.velocity = speed;
     }
 
-    public void setDirection(Directions direction) {
+    public void setDirection(Direction direction) {
         this.direction = direction;
     }
 
-    @Override
+    public Hitbox getHitbox() {
+        return hitbox;
+    }
+
+    public void setHitbox(Hitbox hitbox) {
+        this.hitbox = hitbox;
+    }
+
     public String toString() {
         return "Entity{" +
-                "x=" + x +
-                ", y=" + y +
-                ", width=" + width +
-                ", height=" + height +
+                "x=" + hitbox.getX() +
+                ", y=" + hitbox.getY() +
+                ", width=" + hitbox.getWidth() +
+                ", height=" + hitbox.getHeight() +
                 ", velocity=" + velocity +
                 ", direction=" + direction +
                 '}';
     }
 
-    public Directions getWantedDirection(Directions direction) {
-        this.setDirection(direction);
-        return this.direction;
-    }
 
     public void move() {
         switch (direction) {
@@ -113,42 +108,13 @@ public class Entity {
         }
     }
 
-    public void moveToWantedDirection(Directions direction) {
-        switch (direction) {
-            case UP:
-                this.setY(this.getY() + this.getVelocity());
-                break;
-            case DOWN:
-                this.setY(this.getY() - this.getVelocity());
-                break;
-            case LEFT:
-                this.setX((this.getX() - this.getVelocity()));
-                break;
-            case RIGHT:
-                this.setX((this.getX() + this.getVelocity()));
-                break;
-            default:
-        }
+    public void moveToWantedDirection(Direction direction) {
+        this.setDirection(direction);
+        this.move();
     }
-    public Entity newPosition(Directions direction){
+    public Entity newPosition(Direction direction){
         this.moveToWantedDirection(direction);
         return this;
-
-    }
-
-    public boolean collisionDetector(Entity collider) {
-        if (this.getX() < collider.getX() + collider.getWidth() &&
-                this.getX() + this.getWidth() > collider.getX() &&
-                this.getY() < collider.getY() + collider.getHeight() &&
-                this.getHeight() + this.getY() > collider.getY()) {
-            // collision detected!
-            System.out.println("there's collision");
-            return true;
-
-        } else {
-            System.out.println("there's no collision");
-            return false;
-        }
 
     }
 }

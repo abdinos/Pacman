@@ -1,5 +1,6 @@
 package gameengine.physicsengine;
 
+
 import java.util.ArrayList;
 
 public class GameWorld {
@@ -18,14 +19,14 @@ public class GameWorld {
     }
     public boolean checkCollision(int index){
         for (int i = 0;i<entities.size();i++){
-            if (i != index && entities.get(index).collisionDetector(entities.get(i)))
+            if (i != index && entities.get(index).getHitbox().intersects(entities.get(i).getHitbox()))
                 return true;
 
         }
         return false;
     }
 
-    public void checkPhysicalPrediction(Entity entity, Directions directionX,Directions directionY) {
+    public void checkPhysicalPrediction(Entity entity, Direction directionX, Direction directionY) {
         for (int i = 0; i < getEntitiesNumber(); i++) {
             boolean predictionX = entities.get(i).getX() == entity.newPosition(directionX).getX();
             boolean predictionY = entities.get(i).getY() == entity.newPosition(directionY).getY();
