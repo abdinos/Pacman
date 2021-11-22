@@ -35,5 +35,48 @@ public class Map {
 
     }
 
+public Entity getEntity(int nbr) {
+
+    return entities.get(nbr);
+
+}
+
+    public int getEntitiesRowCounter() {
+        return entitiesRowCounter;
+    }
+
+
+    public int getEntitiesColumnCounter() {
+        return entitiesColumnCounter;
+    }
+
+
+
+    public int getStaticEntitySize() {
+        return staticEntitySize;
+    }
+
+
+    public int getEntitiesNumber(){
+        return  entitiesNumber;
+    }
+
+
+    public void ClearEntity(Entity entity){
+        entities.add(entity);
+        entitiesNumber++;
+    }
+    public void removeEntity(Entity entity){
+        entities.remove(entity);
+        entitiesNumber--;
+    }
+
+
+
+
+
+
+
+
 
 }

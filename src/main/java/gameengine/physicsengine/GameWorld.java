@@ -1,6 +1,8 @@
 package gameengine.physicsengine;
 
 
+import javafx.geometry.Point2D;
+
 import java.util.ArrayList;
 
 public class GameWorld {
@@ -63,4 +65,11 @@ public class GameWorld {
     public int getEntitiesNumber(){
         return  entitiesNumber;
     }
+
+
+
+
+
+
+
 }
