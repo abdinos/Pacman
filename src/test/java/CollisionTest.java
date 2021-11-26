@@ -1,47 +1,47 @@
 import gameengine.physicsengine.Direction;
-import gameengine.physicsengine.Entity;
+import gameengine.physicsengine.PhysicEntity;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class CollisionTest {
-    Entity entity1 = new Entity(3, 3, 15, 20, 20, null,true);
-    Entity entity2 = new Entity(23, 23, 15, 25, 25, null,true);
-    Entity entity3 = new Entity(50, 40, 20, 30, 0, null,false);
+    PhysicEntity physicEntity1 = new PhysicEntity(3, 3, 15, 20, 20, null,true);
+    PhysicEntity physicEntity2 = new PhysicEntity(23, 23, 15, 25, 25, null,true);
+    PhysicEntity physicEntity3 = new PhysicEntity(50, 40, 20, 30, 0, null,false);
 
     @Test
     public void iscollidingTest() {
-        entity1.moveToWantedDirection(Direction.RIGHT);
-        entity1.moveToWantedDirection(Direction.UP);
-        assertTrue(entity1.getHitbox().intersects(entity2.getHitbox()), entity1 + " " + entity2 );
+        physicEntity1.moveToWantedDirection(Direction.RIGHT);
+        physicEntity1.moveToWantedDirection(Direction.UP);
+        assertTrue(physicEntity1.getHitbox().intersects(physicEntity2.getHitbox()), physicEntity1 + " " + physicEntity2);
 
     }
     @Test
     public void iscollidingTest3() {
-        entity2.moveToWantedDirection(Direction.RIGHT);
-        entity2.moveToWantedDirection(Direction.UP);
-        assertTrue(entity2.getHitbox().intersects(entity3.getHitbox()), entity2 + " " + entity3 );
+        physicEntity2.moveToWantedDirection(Direction.RIGHT);
+        physicEntity2.moveToWantedDirection(Direction.UP);
+        assertTrue(physicEntity2.getHitbox().intersects(physicEntity3.getHitbox()), physicEntity2 + " " + physicEntity3);
 
     }
 
 
     @Test
     public void isNotcollidingTest() {
-        entity1.moveToWantedDirection(Direction.LEFT);
-        entity1.moveToWantedDirection(Direction.DOWN);
-        assertFalse(entity1.getHitbox().intersects(entity3.getHitbox()), entity1 + " " + entity3 );
+        physicEntity1.moveToWantedDirection(Direction.LEFT);
+        physicEntity1.moveToWantedDirection(Direction.DOWN);
+        assertFalse(physicEntity1.getHitbox().intersects(physicEntity3.getHitbox()), physicEntity1 + " " + physicEntity3);
 
     }
 
     @Test
     public void isNotcollidingTest2() {
-        entity2.moveToWantedDirection(Direction.LEFT);
-        entity2.moveToWantedDirection(Direction.DOWN);
-        assertFalse(entity2.getHitbox().intersects(entity3.getHitbox()), entity2 + " " + entity3 );
+        physicEntity2.moveToWantedDirection(Direction.LEFT);
+        physicEntity2.moveToWantedDirection(Direction.DOWN);
+        assertFalse(physicEntity2.getHitbox().intersects(physicEntity3.getHitbox()), physicEntity2 + " " + physicEntity3);
     }
     @Test
     public void iscollidingTest2() {
-        assertEquals(true, entity1.getHitbox().intersects(entity1.getHitbox()));
+        assertEquals(true, physicEntity1.getHitbox().intersects(physicEntity1.getHitbox()));
 
     }
 }

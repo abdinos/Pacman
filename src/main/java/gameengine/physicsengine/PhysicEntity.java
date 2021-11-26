@@ -1,23 +1,19 @@
 package gameengine.physicsengine;
-
-
-public class Entity {
+public class PhysicEntity {
     private double velocity;
     private Direction direction;
     private Hitbox hitbox;
     private boolean isMovable;
 
 
-    public Entity(double positionX, double positionY, double width, double height, double velocity, Direction direction,boolean isMovable) {
-
+    public PhysicEntity(double x,double y, double width , double height,double velocity, Direction direction, boolean isMovable) {
         this.velocity = velocity;
         this.direction = direction;
-        this.hitbox = new Hitbox((int)positionX,(int)positionY,width,height);
+        this.hitbox = new Hitbox(x,y,width,height);
         this.isMovable = isMovable;
     }
 
-
-    public Entity() {
+    public PhysicEntity() {
         this.velocity = 0;
         this.direction = null;
         this.hitbox = new Hitbox();
@@ -91,7 +87,7 @@ public class Entity {
 
     @Override
     public String toString() {
-        return "Entity{" +
+        return "PhysicEntity{" +
                 "velocity=" + velocity +
                 ", direction=" + direction +
                 ", hitbox=" + hitbox +
@@ -123,7 +119,7 @@ public class Entity {
         this.setDirection(direction);
         this.move();
     }
-    public Entity newPosition(Direction direction){
+    public PhysicEntity newPosition(Direction direction){
         this.moveToWantedDirection(direction);
         return this;
 

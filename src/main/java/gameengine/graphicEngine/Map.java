@@ -1,12 +1,7 @@
 package gameengine.graphicEngine;
 
-import gameengine.physicsengine.Entity;
-
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
-
 public class Map {
 
     private int entitiesRowCounter ;
