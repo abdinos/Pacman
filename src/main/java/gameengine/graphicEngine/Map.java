@@ -4,19 +4,68 @@ import gameengine.physicsengine.Entity;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Map {
 
-    private ArrayList<Entity> entities = new ArrayList<>();
-    private int entitiesRowCounter = 18;
-    private int entitiesColumnCounter = 17;
-    private static int entitiesNumber = 306;
-    private int staticEntitySize = 16;
-    private String [][] mapData = new String[entitiesRowCounter][entitiesColumnCounter];
+    private int entitiesRowCounter ;
+    private int entitiesColumnCounter;
+    private static int entitiesNumber ;
+    private int staticEntitySize ;
+    private String [][] mapData;
+
+    public Map(int entitiesRowCounter, int entitiesColumnCounter, int staticEntitySize) {
+        this.entitiesRowCounter = entitiesRowCounter;
+        this.entitiesColumnCounter = entitiesColumnCounter;
+        this.staticEntitySize = staticEntitySize;
+        this.mapData = new String[entitiesRowCounter][entitiesColumnCounter];
+    }
 
 
-    public void mapScan() {
+
+
+    public int getEntitiesRowCounter() {
+        return entitiesRowCounter;
+    }
+
+    public void setEntitiesRowCounter(int entitiesRowCounter) {
+        this.entitiesRowCounter = entitiesRowCounter;
+    }
+
+    public int getEntitiesColumnCounter() {
+        return entitiesColumnCounter;
+    }
+
+    public void setEntitiesColumnCounter(int entitiesColumnCounter) {
+        this.entitiesColumnCounter = entitiesColumnCounter;
+    }
+
+    public static int getEntitiesNumber() {
+        return entitiesNumber;
+    }
+
+    public static void setEntitiesNumber(int entitiesNumber) {
+        Map.entitiesNumber = entitiesNumber;
+    }
+
+    public int getStaticEntitySize() {
+        return staticEntitySize;
+    }
+
+    public void setStaticEntitySize(int staticEntitySize) {
+        this.staticEntitySize = staticEntitySize;
+    }
+
+    public String[][] getMapData() {
+        return mapData;
+    }
+
+    public void setMapData(String[][] mapData) {
+        this.mapData = mapData;
+    }
+
+    public void generateMap() {
 
         try (Scanner fileScanner = new Scanner(Map.class.getClassLoader().getResourceAsStream("Map"))) {
             for (int i = 0; i< entitiesRowCounter;i++){
@@ -30,9 +79,10 @@ public class Map {
     }
 
 
-
     public static void main(String[] args) throws FileNotFoundException {
-
+        Map map = new Map(18,17,16);
+        map.generateMap();
+        System.out.println();
     }
 
 

@@ -5,9 +5,9 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CollisionTest {
-    Entity entity1 = new Entity(3, 3, 15, 20, 20, null);
-    Entity entity2 = new Entity(23, 23, 15, 25, 25, null);
-    Entity entity3 = new Entity(50, 40, 20, 30, 0, null);
+    Entity entity1 = new Entity(3, 3, 15, 20, 20, null,true);
+    Entity entity2 = new Entity(23, 23, 15, 25, 25, null,true);
+    Entity entity3 = new Entity(50, 40, 20, 30, 0, null,false);
 
     @Test
     public void iscollidingTest() {

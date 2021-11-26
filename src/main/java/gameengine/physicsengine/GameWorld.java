@@ -17,6 +17,16 @@ public class GameWorld {
             }
         }
     }
+    public void moveentities() {
+        for (int i = 0; i < entitiesNumber; i++) {
+            for (Entity entity : entities) {
+                if (entity.isMovable()) {
+                    entity.move();
+                }
+            }
+
+        }
+    }
     public boolean checkCollision(int index){
         for (int i = 0;i<entities.size();i++){
             if (i != index && entities.get(index).getHitbox().intersects(entities.get(i).getHitbox()))

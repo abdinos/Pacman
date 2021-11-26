@@ -5,13 +5,15 @@ public class Entity {
     private double velocity;
     private Direction direction;
     private Hitbox hitbox;
+    private boolean isMovable;
 
 
-    public Entity(double positionX, double positionY, double width, double height, double velocity, Direction direction) {
+    public Entity(double positionX, double positionY, double width, double height, double velocity, Direction direction,boolean isMovable) {
 
         this.velocity = velocity;
         this.direction = direction;
         this.hitbox = new Hitbox((int)positionX,(int)positionY,width,height);
+        this.isMovable = isMovable;
     }
 
 
@@ -19,6 +21,7 @@ public class Entity {
         this.velocity = 0;
         this.direction = null;
         this.hitbox = new Hitbox();
+        this.isMovable = false;
     }
 
     public double getWidth() {
@@ -78,34 +81,42 @@ public class Entity {
         this.hitbox = hitbox;
     }
 
+    public boolean isMovable() {
+        return isMovable;
+    }
+
+    public void setMovable(boolean movable) {
+        isMovable = movable;
+    }
+
+    @Override
     public String toString() {
         return "Entity{" +
-                "x=" + hitbox.getX() +
-                ", y=" + hitbox.getY() +
-                ", width=" + hitbox.getWidth() +
-                ", height=" + hitbox.getHeight() +
-                ", velocity=" + velocity +
+                "velocity=" + velocity +
                 ", direction=" + direction +
+                ", hitbox=" + hitbox +
+                ", isMovable=" + isMovable +
                 '}';
     }
 
-
     public void move() {
-        switch (direction) {
-            case UP:
-                this.setY(this.getY() + this.getVelocity());
-                break;
-            case DOWN:
-                this.setY(this.getY() - this.getVelocity());
-                break;
-            case LEFT:
-                this.setX((this.getX() - this.getVelocity()));
-                break;
-            case RIGHT:
-                this.setX((this.getX() + this.getVelocity()));
-                break;
-            default:
-        }
+        if (this.isMovable())
+            switch (direction) {
+                case UP:
+                    this.setY(this.getY() + this.getVelocity());
+                    break;
+                case DOWN:
+                    this.setY(this.getY() - this.getVelocity());
+                    break;
+                case LEFT:
+                    this.setX((this.getX() - this.getVelocity()));
+                    break;
+                case RIGHT:
+                    this.setX((this.getX() + this.getVelocity()));
+                    break;
+                default:
+            }
+        else System.out.println("this object is not movable");
     }
 
     public void moveToWantedDirection(Direction direction) {

@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DirectionTest {
-    private Entity testEntity1 = new Entity(4, 3, 40,20,15,null);
+    private Entity testEntity1 = new Entity(4, 3, 40,20,15,null,true);
 
 
     @Test
