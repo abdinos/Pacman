@@ -5,15 +5,15 @@ import java.awt.*;
 import java.util.List;
 
 public class GraphicEngineSwing {
-    BasePanel basePanel ;
-    MenuPanel menuPanel;
+    private BasePanel basePanel ;
+    private MenuPanel menuPanel;
 
 
 
     public GraphicEngineSwing(int width , int height) {
         JFrame frame = new JFrame();
         frame.setSize(width,height);
-        basePanel = new BasePanel();
+        this.basePanel = new BasePanel();
         frame.setLayout(new BorderLayout());
         frame.getContentPane().add(basePanel,BorderLayout.CENTER);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

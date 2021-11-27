@@ -29,16 +29,16 @@ class GraphicEngineTest {
                  int currentType= data[i][j];
                  switch (currentType){
                      case 0: // pacman
-                         entities.add(new GraphicEntity(x,y, ImageIO.read(new File())));
+                         entities.add(new GraphicEntity(x,y, ImageIO.read(new File("resources/Images/PAC1.png"))));
                          break;
                      case 1: // Mur
-                         entities.add(new GraphicEntity(x,y, ImageIO.read(new File())));
+                         entities.add(new GraphicEntity(x,y, ImageIO.read(new File("resources/Images/Titre.png"))));
                          break;
                      case 2: // Monstre
-                         entities.add(new GraphicEntity(x,y, ImageIO.read(new File())));
+                         entities.add(new GraphicEntity(x,y, ImageIO.read(new File("resources/Images/WHITE1.png"))));
                          break;
                      case 3: // Mur
-                         entities.add(new GraphicEntity(x,y, ImageIO.read(new File())));
+                         entities.add(new GraphicEntity(x,y, ImageIO.read(new File("resources/Images/zqsd.png"))));
                          break;
 
 

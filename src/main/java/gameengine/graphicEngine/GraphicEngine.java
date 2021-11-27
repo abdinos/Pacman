@@ -27,6 +27,34 @@ public class GraphicEngine {
     private Text timeText;
     private Group group;
 
+    public Map getMap() {
+        return map;
+    }
+
+    public Stage getStage() {
+        return stage;
+    }
+
+    public AnchorPane getWindow() {
+        return window;
+    }
+
+    public Text getLivesText() {
+        return livesText;
+    }
+
+    public Text getScoreText() {
+        return scoreText;
+    }
+
+    public Text getTimeText() {
+        return timeText;
+    }
+
+    public Group getGroup() {
+        return group;
+    }
+
     public GraphicEngine(Map map) {
         this.map = map;
 

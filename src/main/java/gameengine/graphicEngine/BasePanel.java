@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BasePanel extends JPanel {
-    List<GraphicEntity> graphicEntities;
+    private List<GraphicEntity> graphicEntities;
 
     public BasePanel(){
         graphicEntities = new ArrayList<>();
