@@ -3,11 +3,11 @@ package gameengine.graphicEngine;
 import java.awt.*;
 
 public class GraphicEntity {
-    int x;
-    int y;
-    Image image;
-    int width;
-    int height;
+   private int x;
+   private int y;
+   private Image image;
+   private int width;
+   private int height;
 
     public GraphicEntity(int x, int y, Image image) {
         this.x = x;

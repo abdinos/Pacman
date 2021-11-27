@@ -1,6 +1,7 @@
 package gameengine.graphicEngine;
 
 import java.io.FileNotFoundException;
+import java.util.Objects;
 import java.util.Scanner;
 public class Map {
 
@@ -62,7 +63,7 @@ public class Map {
 
     public void generateMap() {
 
-        try (Scanner fileScanner = new Scanner(Map.class.getClassLoader().getResourceAsStream("Map"))) {
+        try (Scanner fileScanner = new Scanner(Objects.requireNonNull(Map.class.getClassLoader().getResourceAsStream("Map")))) {
             for (int i = 0; i< entitiesRowCounter;i++){
                 String line = fileScanner.nextLine();
                 String[] elements = line.split(" ");
