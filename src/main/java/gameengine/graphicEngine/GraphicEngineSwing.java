@@ -22,7 +22,7 @@ public class GraphicEngineSwing {
     public BasePanel getBasePanel(){
         return this.basePanel;
     }
-    
+
     public MenuPanel getMenuPanel(){
         return menuPanel;
     }
