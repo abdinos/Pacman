@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="CollisionTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-11-27T19:41:11" hostname="LAPTOP-5EPNS6Q8" time="0.073">
+  <properties/>
+  <testcase name="iscollidingTest()" classname="CollisionTest" time="0.064"/>
+  <testcase name="isNotcollidingTest2()" classname="CollisionTest" time="0.003"/>
+  <testcase name="isNotcollidingTest()" classname="CollisionTest" time="0.004"/>
+  <system-out><![CDATA[there's collision
+there's no collision
+there's no collision
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
