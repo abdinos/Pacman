@@ -6,6 +6,7 @@ import java.util.List;
 
 public class GraphicEngineSwing {
     BasePanel basePanel ;
+    MenuPanel menuPanel;
 
 
 
@@ -20,6 +21,10 @@ public class GraphicEngineSwing {
     }
     public BasePanel getBasePanel(){
         return this.basePanel;
+    }
+    
+    public MenuPanel getMenuPanel(){
+        return menuPanel;
     }
     public List<GraphicEntity> getEntities(){
         return basePanel.getGraphicEntities();
@@ -45,6 +50,11 @@ public class GraphicEngineSwing {
             basePanel.deleteEntity(entity);
         }
     }
+    public void getGameState() {
+        basePanel.repaint();
+    }
+
+
 
 
 

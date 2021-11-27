@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class MenuPane extends JPanel {
+public class MenuPanel extends JPanel {
 
     private JButton exit_btn = new JButton("Exit");
     private JButton pause_btn = new JButton("Exit");
@@ -34,7 +34,7 @@ public class MenuPane extends JPanel {
     }
 
 
-    protected MenuPane(JButton TimeLeft_btn) {
+    protected MenuPanel(JButton TimeLeft_btn) {
 
         super();
 
@@ -51,14 +51,7 @@ public class MenuPane extends JPanel {
     }
 }
 
-/*protected ActionListener pauseAction(){
-      return e -> {
 
-
-      }
-
-
-}
 
 
 
