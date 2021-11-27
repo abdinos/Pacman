@@ -1,5 +1,5 @@
 package gameengine.physicsengine;
 
-public enum Directions {
+ public enum Direction {
     UP,LEFT,DOWN,RIGHT
 }
