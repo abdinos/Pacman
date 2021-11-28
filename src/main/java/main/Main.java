@@ -1,12 +1,10 @@
 package main;
 
 import gameengine.graphicEngine.*;
-import gameengine.physicsengine.Direction;;
+;
 import gameengine.physicsengine.PhysicEntity;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
@@ -15,7 +13,7 @@ public class Main {
         PhysicEntity physicEntity1 = new PhysicEntity(3,3,5,5,20,null,true);
         PhysicEntity physicEntity2 = new PhysicEntity(23,23,15,20,2,null,false);
         Map map = new Map(18,17,16);
-    //    map.generateMap("Map");
+        map.generateMap("Map");
     //    GraphicEngine graphicEngine =  new GraphicEngine(map);
     //    graphicEngine.reloadWorldMap(map);
 
@@ -25,7 +23,7 @@ public class Main {
         BasePanel panel= new BasePanel();
         GraphicEntity ge= new GraphicEntity(150,20,ImageIO.read(new File("src\\main\\resources\\Images\\Titre.png")));
         GraphicEntity ghost= new GraphicEntity(200,200,ImageIO.read(new File("src\\main\\resources\\Images\\Pacman.gif")));
-        GraphicEngineSwing gs = new GraphicEngineSwing(800,500);
+        GraphicEngine gs = new GraphicEngine(800,500);
         ghost.setHeight(80);
        // gs.setBasePanel(panel);
         gs.addEntity(ge);

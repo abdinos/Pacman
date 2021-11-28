@@ -1,25 +1,24 @@
 package gameengine.gamecore;
 
-import gameengine.graphicEngine.GraphicEngineSwing;
-import gameengine.physicsengine.PhysicEntity;
+import gameengine.graphicEngine.GraphicEngine;
 import gameengine.physicsengine.PhysicsEngine;
 
 public class CorePositions {
 
-    private GraphicEngineSwing graphicEngineSwing;
+    private GraphicEngine graphicEngine;
     private PhysicsEngine physicsEngine;
 
-    public CorePositions(GraphicEngineSwing graphicEngineSwing, PhysicsEngine physicsEngine) {
-        this.graphicEngineSwing = graphicEngineSwing;
+    public CorePositions(GraphicEngine graphicEngine, PhysicsEngine physicsEngine) {
+        this.graphicEngine = graphicEngine;
         this.physicsEngine = physicsEngine;
     }
 
-    public GraphicEngineSwing getGraphicEngineSwing() {
-        return graphicEngineSwing;
+    public GraphicEngine getGraphicEngineSwing() {
+        return graphicEngine;
     }
 
-    public void setGraphicEngineSwing(GraphicEngineSwing graphicEngineSwing) {
-        this.graphicEngineSwing = graphicEngineSwing;
+    public void setGraphicEngineSwing(GraphicEngine graphicEngine) {
+        this.graphicEngine = graphicEngine;
     }
 
     public void setPhysicsEngine(PhysicsEngine physicsEngine) {
