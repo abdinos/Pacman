@@ -32,6 +32,7 @@ public class BasePanel extends JPanel {
         graphicEntities.clear();
     }
     public void addEntity(GraphicEntity entity){
+        System.out.println("Ajout Entité "+entity.getX()+" "+entity.getY());
         graphicEntities.add(entity);
 
     }
@@ -42,11 +43,22 @@ public class BasePanel extends JPanel {
     @Override
     protected void paintComponent(Graphics graphic) {
         super.paintComponent(graphic);
+        this.paintGraphicEntity(graphic);
     }
     void paintGraphicEntity(Graphics graphic){
-        graphic.setColor(Color.PINK);
+        this.setBackground(Color.BLACK);
+
         for (GraphicEntity graphicEntity : graphicEntities){
-            graphic.drawImage(graphicEntity.getImage(), (int)graphicEntity.getX(),(int)graphicEntity.getY(),graphicEntity.getWidth(),graphicEntity.getHeight(),null);
+         /**   System.out.println(graphicEntity.getX());
+            System.out.println(graphicEntity.getY());
+            System.out.println(graphicEntity.getWidth());
+            System.out.println(graphicEntity.getHeight());*/
+            graphic.drawImage(graphicEntity.getImage(),
+                    graphicEntity.getX(),
+                    graphicEntity.getY(),
+                    graphicEntity.getWidth(),
+                    graphicEntity.getHeight(),
+                    null);
         }
     }
 }

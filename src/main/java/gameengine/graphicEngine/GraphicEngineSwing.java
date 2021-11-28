@@ -16,6 +16,7 @@ public class GraphicEngineSwing {
     public GraphicEngineSwing(int width , int height) {
         this.frame = new JFrame();
         frame.setSize(width,height);
+        frame.setTitle("PACMAN!");
         this.basePanel = new BasePanel();
         frame.setLayout(new BorderLayout());
         //frame.getContentPane().add(basePanel,BorderLayout.CENTER);
@@ -49,13 +50,15 @@ public class GraphicEngineSwing {
 
     public List<GraphicEntity> addEntity(GraphicEntity entity) throws IOException {
        //  this.basePanel.addEntity(entity);
-        JLabel pic = new JLabel(new ImageIcon(ImageIO.read(new File("src\\main\\resources\\Images\\Titre.png"))));
-        //JLabel label= new JLabel(new ImageIcon (entity.getImage()));
-        this.getBasePanel().add(pic);
-        this.getBasePanel().setBackground(Color.black);
-        this.getBasePanel().updateUI();
-        basePanel.repaint();
-        this.getFrame().revalidate();
+       // JLabel pic = new JLabel(new ImageIcon(ImageIO.read(new File("src\\main\\resources\\Images\\Titre.png"))));
+      //  JLabel label= new JLabel(new ImageIcon (entity.getImage()));
+       // this.getBasePanel().add(label);
+        this.getBasePanel().addEntity(entity);
+      //  System.out.println("size "+this.getBasePanel().getGraphicEntities().size());
+
+       // this.getBasePanel().updateUI();
+       // basePanel.repaint();
+       // this.getFrame().validate();
 
          return basePanel.getGraphicEntities();
     }

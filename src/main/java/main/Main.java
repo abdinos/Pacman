@@ -15,7 +15,7 @@ public class Main {
         PhysicEntity physicEntity1 = new PhysicEntity(3,3,5,5,20,null,true);
         PhysicEntity physicEntity2 = new PhysicEntity(23,23,15,20,2,null,false);
         Map map = new Map(18,17,16);
-    //    map.generateMap();
+    //    map.generateMap("Map");
     //    GraphicEngine graphicEngine =  new GraphicEngine(map);
     //    graphicEngine.reloadWorldMap(map);
 
@@ -23,11 +23,15 @@ public class Main {
        // frame.setTitle("PACMAN!");
        // frame.setSize(800, 500);
         BasePanel panel= new BasePanel();
-        GraphicEntity ge= new GraphicEntity(20,20,ImageIO.read(new File("src\\main\\resources\\Images\\Titre.png")));
+        GraphicEntity ge= new GraphicEntity(150,20,ImageIO.read(new File("src\\main\\resources\\Images\\Titre.png")));
+        GraphicEntity ghost= new GraphicEntity(200,200,ImageIO.read(new File("src\\main\\resources\\Images\\Pacman.gif")));
         GraphicEngineSwing gs = new GraphicEngineSwing(800,500);
-        gs.setBasePanel(panel);
+        ghost.setHeight(80);
+       // gs.setBasePanel(panel);
         gs.addEntity(ge);
-        System.out.println(gs.getBasePanel().getComponent(0));
+        gs.addEntity(ghost);
+        gs.repaint();
+       // System.out.println(gs.getBasePanel().getComponent(0));
       /**  JLabel pic = new JLabel(new ImageIcon(ImageIO.read(new File("src\\main\\resources\\Images\\Titre.png"))));
         pic.setBackground(Color.PINK);
         pic.setVerticalAlignment(JLabel.BOTTOM);
