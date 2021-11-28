@@ -17,7 +17,7 @@ public class GraphicEntity {
         this.height = image.getHeight(null);
     }
 
-    public double getX() {
+    public int getX() {
         return x;
     }
 
