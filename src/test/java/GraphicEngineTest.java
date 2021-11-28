@@ -1,4 +1,3 @@
-import gameengine.graphicEngine.GraphicEngineSwing;
 import gameengine.graphicEngine.GraphicEntity;
 
 import javax.imageio.ImageIO;

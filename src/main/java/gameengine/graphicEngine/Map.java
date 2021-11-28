@@ -1,11 +1,8 @@
 package gameengine.graphicEngine;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.awt.*;
-import java.awt.geom.Rectangle2D;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.Scanner;
@@ -16,18 +13,18 @@ public class Map {
     private  int entitiesNumber ;
     private int entitySize ;
     private String [][] mapData;
-    private GraphicEngineSwing graphicEngineSwing;
+    private GraphicEngine graphicEngine;
 
     public Map(int entitiesRowCounter, int entitiesColumnCounter, int staticEntitySize) {
         this.entitiesRowCounter = entitiesRowCounter;
         this.entitiesColumnCounter = entitiesColumnCounter;
         this.entitySize = staticEntitySize;
         this.mapData = new String[entitiesRowCounter][entitiesColumnCounter];
-        this.graphicEngineSwing= new GraphicEngineSwing(800,600);
+        this.graphicEngine = new GraphicEngine(800,600);
     }
 
-    public Map(GraphicEngineSwing graphicEngineSwing,String fileName) {
-        this.graphicEngineSwing = graphicEngineSwing;
+    public Map(GraphicEngine graphicEngine, String fileName) {
+        this.graphicEngine = graphicEngine;
         this.entitiesColumnCounter=0;
         this.entitiesRowCounter=0;
         this.entitySize=2;
@@ -74,8 +71,8 @@ public class Map {
         this.mapData = mapData;
     }
 
-    public GraphicEngineSwing getGraphicEngineSwing() {
-        return graphicEngineSwing;
+    public GraphicEngine getGraphicEngineSwing() {
+        return graphicEngine;
     }
 
     public void generateMap(String fileName) throws IOException {
