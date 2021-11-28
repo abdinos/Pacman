@@ -33,6 +33,7 @@ public class BasePanel extends JPanel {
     }
     public void addEntity(GraphicEntity entity){
         graphicEntities.add(entity);
+
     }
     public GraphicEntity getEntity(int index){
       return   graphicEntities.get(index);
