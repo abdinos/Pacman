@@ -4,10 +4,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CollisionTest {
-    PhysicEntity physicEntity1 = new PhysicEntity(3, 3, 15, 20, 20, null,true);
-    PhysicEntity physicEntity2 = new PhysicEntity(23, 23, 15, 25, 25, null,true);
-    PhysicEntity physicEntity3 = new PhysicEntity(50, 40, 20, 30, 0, null,false);
+class HitboxTest {
+    PhysicEntity physicEntity1 = new PhysicEntity(3, 3, 15, 20, 20, null,true,true);
+    PhysicEntity physicEntity2 = new PhysicEntity(23, 23, 15, 25, 25, null,true,true);
+    PhysicEntity physicEntity3 = new PhysicEntity(50, 40, 20, 30, 0, null,false,true);
 
     @Test
     public void iscollidingTest() {
@@ -17,12 +17,13 @@ class CollisionTest {
 
     }
     @Test
-    public void iscollidingTest3() {
+    public void iscollidingTest2() {
         physicEntity2.moveToWantedDirection(Direction.RIGHT);
         physicEntity2.moveToWantedDirection(Direction.UP);
         assertTrue(physicEntity2.getHitbox().intersects(physicEntity3.getHitbox()), physicEntity2 + " " + physicEntity3);
 
     }
+
 
 
     @Test
@@ -40,8 +41,8 @@ class CollisionTest {
         assertFalse(physicEntity2.getHitbox().intersects(physicEntity3.getHitbox()), physicEntity2 + " " + physicEntity3);
     }
     @Test
-    public void iscollidingTest2() {
-        assertEquals(true, physicEntity1.getHitbox().intersects(physicEntity1.getHitbox()));
+    public void iscollidingTest4() {
+        assertTrue(physicEntity1.getHitbox().intersects(physicEntity2.getHitbox()), physicEntity1 + " " + physicEntity2);
 
-    }
+}
 }

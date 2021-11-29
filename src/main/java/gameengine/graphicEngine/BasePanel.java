@@ -1,5 +1,7 @@
 package gameengine.graphicEngine;
 
+import gameengine.gamecore.GenericEntity;
+
 import javax.swing.*;
 import javax.swing.text.html.parser.Entity;
 import java.awt.*;
@@ -42,23 +44,16 @@ public class BasePanel extends JPanel {
 
     @Override
     protected void paintComponent(Graphics graphic) {
-        super.paintComponent(graphic);
         this.paintGraphicEntity(graphic);
     }
-    void paintGraphicEntity(Graphics graphic){
-        this.setBackground(Color.BLACK);
 
-        for (GraphicEntity graphicEntity : graphicEntities){
-         /**   System.out.println(graphicEntity.getX());
-            System.out.println(graphicEntity.getY());
-            System.out.println(graphicEntity.getWidth());
-            System.out.println(graphicEntity.getHeight());*/
-            graphic.drawImage(graphicEntity.getImage(),
-                    graphicEntity.getX(),
-                    graphicEntity.getY(),
-                    graphicEntity.getWidth(),
-                    graphicEntity.getHeight(),
-                    null);
+    void paintGraphicEntity(Graphics graphic){
+        graphic.setColor(Color.black);
+        graphic.fillRect(0,0,this.getWidth(),this.getHeight());
+        for (GraphicEntity genericEntity:graphicEntities){
+            graphic.drawImage(genericEntity.getImage(),genericEntity.getX(),
+                    genericEntity.getY(),genericEntity.getWidth(),genericEntity.getHeight(),null);
+
         }
     }
 }

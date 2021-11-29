@@ -1,4 +1,5 @@
 import gameengine.graphicEngine.GraphicEntity;
+import org.junit.jupiter.api.Test;
 
 import javax.imageio.ImageIO;
 import java.io.File;
