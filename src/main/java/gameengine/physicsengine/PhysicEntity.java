@@ -1,16 +1,18 @@
 package gameengine.physicsengine;
 public class PhysicEntity {
-    private double velocity;
+    private int velocity;
     private Direction direction;
     private Hitbox hitbox;
     private boolean isMovable;
+    private boolean isSolid;
 
 
-    public PhysicEntity(double x,double y, double width , double height,double velocity, Direction direction, boolean isMovable) {
+    public PhysicEntity(int x,int y, int width , int height,int velocity, Direction direction, boolean isMovable,boolean isSolid) {
         this.velocity = velocity;
         this.direction = direction;
         this.hitbox = new Hitbox(x,y,width,height);
         this.isMovable = isMovable;
+        this.isSolid = isSolid;
     }
 
     public PhysicEntity() {
@@ -18,40 +20,46 @@ public class PhysicEntity {
         this.direction = null;
         this.hitbox = new Hitbox();
         this.isMovable = false;
+        this.isSolid = true;
     }
 
-    public double getWidth() {
-        return hitbox.getWidth();
+    public int getWidth() {
+        return (int)hitbox.getWidth();
     }
 
     public double getHeight() {
-        return hitbox.getHeight();
+        return (int) hitbox.getHeight();
     }
 
-    public Direction getDirection() {
-        return direction;
+    public Direction getDirection() {return direction;}
+
+    public int getX() {
+        return (int) hitbox.getX();
     }
 
-    public double getX() {
-        return hitbox.getX();
-    }
-
-    public void setX(double x) {
+    public void setX(int x) {
         hitbox.setX(x);
     }
 
-    public double getY() {
-        return hitbox.getY();
+    public int getY() {
+        return (int) hitbox.getY();
     }
 
-    public void setY(double y) {
+    public void setY(int y) {
         hitbox.setY(y);
     }
 
-    public double getVelocity() {
+    public int getVelocity() {
         return velocity;
     }
 
+    public boolean isSolid() {
+        return isSolid;
+    }
+
+    public void setSolid(boolean solid) {
+        isSolid = solid;
+    }
 
     public void setWidth(double width) {
         hitbox.setWidth(width);
@@ -61,8 +69,8 @@ public class PhysicEntity {
         hitbox.setHeight(height);
     }
 
-    public void setVelocity(double speed) {
-        this.velocity = speed;
+    public void setVelocity(int velocity) {
+        this.velocity = velocity;
     }
 
     public void setDirection(Direction direction) {
@@ -92,11 +100,11 @@ public class PhysicEntity {
                 ", direction=" + direction +
                 ", hitbox=" + hitbox +
                 ", isMovable=" + isMovable +
+                ", isSolid=" + isSolid +
                 '}';
     }
 
     public void move() {
-        if (this.isMovable())
             switch (direction) {
                 case UP:
                     this.setY(this.getY() + this.getVelocity());
@@ -112,7 +120,6 @@ public class PhysicEntity {
                     break;
                 default:
             }
-        else System.out.println("this object is not movable");
     }
 
     public void moveToWantedDirection(Direction direction) {

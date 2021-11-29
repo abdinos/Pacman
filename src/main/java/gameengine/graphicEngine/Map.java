@@ -1,5 +1,7 @@
 package gameengine.graphicEngine;
 
+import gameengine.gamecore.GameCore;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.File;
@@ -13,23 +15,16 @@ public class Map {
     private  int entitiesNumber ;
     private int entitySize ;
     private String [][] mapData;
-    private GraphicEngine graphicEngine;
+    private GameCore gameCore;
 
     public Map(int entitiesRowCounter, int entitiesColumnCounter, int staticEntitySize) {
         this.entitiesRowCounter = entitiesRowCounter;
         this.entitiesColumnCounter = entitiesColumnCounter;
         this.entitySize = staticEntitySize;
         this.mapData = new String[entitiesRowCounter][entitiesColumnCounter];
-        this.graphicEngine = new GraphicEngine(800,600);
+        this.gameCore = new GameCore(entitiesRowCounter,entitiesColumnCounter,staticEntitySize);
     }
 
-    public Map(GraphicEngine graphicEngine, String fileName) {
-        this.graphicEngine = graphicEngine;
-        this.entitiesColumnCounter=0;
-        this.entitiesRowCounter=0;
-        this.entitySize=2;
-        this.entitiesNumber=0;
-    }
 
     public int getEntitiesRowCounter() {
         return entitiesRowCounter;
@@ -71,9 +66,6 @@ public class Map {
         this.mapData = mapData;
     }
 
-    public GraphicEngine getGraphicEngineSwing() {
-        return graphicEngine;
-    }
 
     public void generateMap(String fileName) throws IOException {
 
@@ -87,7 +79,6 @@ public class Map {
                 }
             }
         }
-        resolveMap();
 
     }
     public void resolveMap() throws IOException {
@@ -95,27 +86,29 @@ public class Map {
             for (int j=0;j<getMapData()[i].length;j++){
                 switch (getMapData()[i][j]){
                     case "W":
-                        GraphicEntity entity= new GraphicEntity(100+i,100+j,ImageIO.read(new File("src\\main\\resources\\Images\\BELL.png")));
+                        GraphicEntity entity= new GraphicEntity(100+i,100+j,ImageIO.read(new File("src\\main\\resources\\Images\\APPLE.png")));
                         entity.setHeight(10);
                         entity.setWidth(10);
-                        getGraphicEngineSwing().addEntity(entity);break;
+                        gameCore.graphicEngine.addEntity(entity);
                     case "B":
-                        Image img1=ImageIO.read(new File("src\\main\\resources\\Images\\PAC1.png"));
+                        Image img1=ImageIO.read(new File("src\\main\\resources\\Images\\BELL.png"));
                         GraphicEntity entity1= new GraphicEntity(100+i,150+j,img1);
                         entity1.setHeight(10);
                         entity1.setWidth(10);
-                        getGraphicEngineSwing().addEntity(entity1);break;
+                        gameCore.graphicEngine.addEntity(entity1);
                     case "F":
-                        GraphicEntity entity2= new GraphicEntity(200+i,200+j,ImageIO.read(new File("src\\main\\resources\\Images\\WHITE1.png")));
+                        GraphicEntity entity2= new GraphicEntity(200+i,200+j,ImageIO.read(new File("src\\main\\resources\\Images\\MELON.png")));
                         entity2.setHeight(10);
                         entity2.setWidth(10);
-                        getGraphicEngineSwing().addEntity(entity2);break;
+                        gameCore.graphicEngine.addEntity(entity2);
                     default:
-                        break;
                 }
             }
+            gameCore.graphicEngine.getBasePanel().repaint();
         }
-        getGraphicEngineSwing().getBasePanel().repaint();
+
+
+
     }
 
 

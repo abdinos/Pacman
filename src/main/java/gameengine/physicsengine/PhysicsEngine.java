@@ -2,31 +2,74 @@ package gameengine.physicsengine;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class PhysicsEngine {
     public ArrayList<PhysicEntity> entities = new ArrayList<>();
     private int entitiesNumber = 0;
-    ArrayList<PhysicEntity> collidedEntities = new ArrayList<>();
+    HashMap<PhysicEntity, ArrayList<PhysicEntity>>collidedEntities = new HashMap<>();
 
 
-    public void entitiesCollision(){
-        for (int i = 0; i < entitiesNumber; i++){
-            for (PhysicEntity physicEntity : entities){
-                if (checkCollision(i))
-                    collidedEntities.add(physicEntity);
-            }
+    public ArrayList<PhysicEntity> getEntities() {
+        return entities;
+    }
+
+    public void setEntities(ArrayList<PhysicEntity> entities) {
+        this.entities = entities;
+    }
+
+    public void setEntitiesNumber(int entitiesNumber) {
+        this.entitiesNumber = entitiesNumber;
+    }
+
+    public HashMap<PhysicEntity, ArrayList<PhysicEntity>> getCollidedEntities() {
+        return collidedEntities;
+    }
+
+    public ArrayList<PhysicEntity> entitiesCollision(PhysicEntity entity){
+        ArrayList<PhysicEntity> collidingentities = null;
+        for (PhysicEntity physicEntity : entities){
+              if(!entity.equals(physicEntity) && entity.getHitbox().intersects(physicEntity.getHitbox())){
+                  if (collidingentities == null){
+                      collidingentities = new ArrayList<>();
+                  }
+                  collidingentities.add(physicEntity);
+              }
+
+        }
+
+        return collidingentities;
+    }
+    public void setcollisionData(){
+        for (PhysicEntity physicEntity :entities){
+           ArrayList<PhysicEntity> collisions = entitiesCollision(physicEntity);
+           collidedEntities.put(physicEntity,collisions);
         }
     }
-    public void moveentities() {
-        for (int i = 0; i < entitiesNumber; i++) {
-            for (PhysicEntity physicEntity : entities) {
-                if (physicEntity.isMovable()) {
-                    physicEntity.move();
+    public void predictPosition(){
+        for (PhysicEntity physicEntity :entities){
+            if (physicEntity.isMovable()){
+                int previousX = physicEntity.getX();
+                int previousY = physicEntity.getY();
+                physicEntity.move();
+                ArrayList<PhysicEntity> collisions = entitiesCollision(physicEntity);
+                if (collisions!=null){
+                    collidedEntities.put(physicEntity,collisions);
+                    for (PhysicEntity collidingitem : collisions){
+                        if (collidingitem.isSolid()){
+                            physicEntity.setX(previousX);
+                            physicEntity.setY(previousY);
+                            break;
+                        }
+                    }
+
                 }
             }
 
+
         }
     }
+
     public boolean checkCollision(int index){
         for (int i = 0;i<entities.size();i++){
             if (i != index && entities.get(index).getHitbox().intersects(entities.get(i).getHitbox()))
@@ -36,18 +79,9 @@ public class PhysicsEngine {
         return false;
     }
 
-    public void checkPhysicalPrediction(PhysicEntity physicEntity, Direction directionX, Direction directionY) {
-        for (int i = 0; i < getEntitiesNumber(); i++) {
-            boolean predictionX = entities.get(i).getX() == physicEntity.newPosition(directionX).getX();
-            boolean predictionY = entities.get(i).getY() == physicEntity.newPosition(directionY).getY();
-            if (predictionX || predictionY)
-                collidedEntities.add(physicEntity);
-        }
-    }
-
-    public void checkCollidedEntities(){
-        for (PhysicEntity collidingPhysicEntity : collidedEntities) {
-            System.out.print(collidingPhysicEntity);
+    public void checkCollidingEntities(){
+        for (PhysicEntity entity : collidedEntities.keySet()){
+            System.out.println("entity: "+ entity + " colliding entities: "+collidedEntities.get(entity));
         }
     }
 
@@ -62,7 +96,7 @@ public class PhysicsEngine {
         entitiesNumber--;
     }
 
-    public void spawnEntity(PhysicEntity physicEntity){
+    public void addEntity(PhysicEntity physicEntity){
         entities.add(physicEntity);
         entitiesNumber++;
     }

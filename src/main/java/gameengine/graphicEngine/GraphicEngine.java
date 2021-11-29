@@ -48,11 +48,8 @@ public class GraphicEngine {
         basePanel.repaint();
     }
 
-    public List<GraphicEntity> addEntity(GraphicEntity entity) throws IOException {
-;
+    public void addEntity(GraphicEntity entity)  {
         this.getBasePanel().addEntity(entity);
-
-         return basePanel.getGraphicEntities();
     }
     public List<GraphicEntity> removeEntity(GraphicEntity entity){
         basePanel.deleteEntity(entity);
@@ -65,9 +62,6 @@ public class GraphicEngine {
         for (GraphicEntity entity : graphicEntities){
             basePanel.deleteEntity(entity);
         }
-    }
-    public void getGameState() {
-        basePanel.repaint();
     }
 
 

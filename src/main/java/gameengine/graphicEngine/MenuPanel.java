@@ -7,10 +7,10 @@ import java.awt.event.ActionListener;
 public class MenuPanel extends JPanel {
 
     private JButton exit_btn = new JButton("Exit");
-    private JButton pause_btn = new JButton("Exit");
+    private JButton pause_btn = new JButton("Pause");
     private JButton TimeLeft_btn = new JButton("TimeLeft");
     private JLabel labelTimer;
-    private JLabel labelscore = new JLabel("score");
+    private JLabel labelscore = new JLabel("score : 0");
 
     protected JButton getPause_btn() {
         return pause_btn;

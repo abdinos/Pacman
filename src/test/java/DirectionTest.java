@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DirectionTest {
-    private PhysicEntity testPhysicEntity1 = new PhysicEntity(4, 3, 40,20,15,null,true);
+    private PhysicEntity testPhysicEntity1 = new PhysicEntity(4, 3, 40,20,15,null,true,true);
 
 
     @Test

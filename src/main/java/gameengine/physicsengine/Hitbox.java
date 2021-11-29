@@ -5,7 +5,7 @@ import javafx.scene.shape.Shape;
 
 
 public class Hitbox extends Rectangle {
-   public Hitbox (double x, double y , double width , double height){
+   public Hitbox (int x, int y , int width , int height){
        super();
        setX(x);
        setY(y);

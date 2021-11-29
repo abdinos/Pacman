@@ -1,14 +1,14 @@
 package gameengine.input;
 
-import gameengine.gamecore.CorePositions;
+import gameengine.gamecore.GameCore;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class InputEngine implements KeyListener {
-    private CorePositions corePositions;
+    private GameCore gameCore = new GameCore(200,200,16);
     public InputEngine(){
-        this.corePositions.getGraphicEngineSwing().getFrame().addKeyListener(this);
+        this.gameCore.graphicEngine.getFrame().addKeyListener(this);
     }
     @Override
     public void keyTyped(KeyEvent e) {
