@@ -9,6 +9,15 @@ public class GraphicEntity {
    private int width;
    private int height;
 
+
+    public GraphicEntity(int x, int y, Image image,int width,int height) {
+        this.x = x;
+        this.y = y;
+        this.image = image;
+        this.width = width;
+        this.height = height;
+    }
+
     public GraphicEntity(int x, int y, Image image) {
         this.x = x;
         this.y = y;

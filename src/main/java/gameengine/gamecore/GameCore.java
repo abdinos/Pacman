@@ -8,7 +8,6 @@ import gameengine.physicsengine.PhysicEntity;
 import gameengine.physicsengine.PhysicsEngine;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -32,23 +31,7 @@ public class GameCore {
         return graphicEngine;
     }
 
-    public GraphicEntity physicToGraphic(PhysicEntity entity) throws IOException {
 
-        Image image = null;
-
-        if(entity.isMovable()){
-            if (entity.isSolid()){
-                switch (entity.getDirection()){
-                    case UP :  image= ImageIO.read(new File("src\\main\\resources\\Images\\PAC5.png"));break;
-                    case DOWN:  image= ImageIO.read(new File("src\\main\\resources\\Images\\PAC1.png"));break;
-                    case LEFT: image= ImageIO.read(new File("src\\main\\resources\\Images\\PAC4.png"));break;
-                    case RIGHT: image= ImageIO.read(new File("src\\main\\resources\\Images\\PAC3.png"));break;
-                }
-            }
-        }
-        GraphicEntity graphicEntity= new GraphicEntity(entity.getX(),entity.getY(),image);
-        return graphicEntity;
-    }
     public PhysicsEngine getPhysicsEngine() {
         return physicsEngine;
     }
@@ -56,6 +39,9 @@ public class GameCore {
     public ArrayList<GenericEntity> getGenericEntities() {
         return genericEntities;
     }
+
+
+
     public GenericEntity getGenericFromPhysic(PhysicEntity physicEntity){
         for (GenericEntity genericEntity: genericEntities){
             if (genericEntity.getPhysicEntity().equals(physicEntity))
@@ -87,12 +73,15 @@ public class GameCore {
         genericEntities.remove(genericEntity);
 
     }
-    public HashMap<GenericEntity,ArrayList<GenericEntity>> getCollidingEntities(){
+    public HashMap<GenericEntity,ArrayList<GenericEntity>> computeCollisions(){
+
         HashMap<GenericEntity,ArrayList<GenericEntity>> collidingGenericEntities = new HashMap<>();
         HashMap<PhysicEntity,ArrayList<PhysicEntity>> collidingPhysicEntities = physicsEngine.getCollidedEntities();
+
         for (PhysicEntity physicEntity :collidingPhysicEntities.keySet()){
             GenericEntity temp = getGenericFromPhysic(physicEntity);
             collidingGenericEntities.put(temp,new ArrayList<>());
+
             for (PhysicEntity collidingPhysicEntity : collidingPhysicEntities.get(physicEntity)){
                 collidingGenericEntities.get(getGenericFromPhysic(physicEntity)).add(getGenericFromPhysic(collidingPhysicEntity));
             }
@@ -105,11 +94,23 @@ public class GameCore {
         for (PhysicEntity physicEntity:physicsEngine.getEntities()){
             if (physicEntity.isMovable()){
                 GraphicEntity graphicEntity = getGenericFromPhysic(physicEntity).getGraphicEntity();
-                graphicEntity.setX(physicEntity.getX()*CONVERSION_UNIT);
-                graphicEntity.setY(physicEntity.getY()*CONVERSION_UNIT);
+                System.out.println(graphicEntity.getX() +" "+ graphicEntity.getY());
+                graphicEntity.setX(physicEntity.getX());
+                graphicEntity.setY(physicEntity.getY());
+                System.out.println(graphicEntity.getX() +" "+ graphicEntity.getY());
             }
         }
         graphicEngine.repaint();
+    }
+
+    public static void main(String[] args) throws IOException {
+        GameCore gameCore = new GameCore(600,600,20);
+        GenericEntity entity = new GenericEntity(new PhysicEntity(1,1,40,40,40,Direction.UP,true,true),new GraphicEntity(1,1, ImageIO.read(new File("src\\main\\resources\\Images\\PAC1.png")),40,40));
+        GenericEntity entity1 = new GenericEntity(new PhysicEntity(400,400,40,70,2,null,false,true),new GraphicEntity(400,400, ImageIO.read(new File("src\\main\\resources\\Images\\WALL.png")),40,70));
+        gameCore.addGenericEntity(entity1);
+        gameCore.addGenericEntity(entity);
+        gameCore.computeCollisions();
+        gameCore.refresh();
     }
 }
 
