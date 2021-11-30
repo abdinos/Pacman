@@ -7,11 +7,29 @@ import java.util.HashMap;
 public class PhysicsEngine {
     public ArrayList<PhysicEntity> entities = new ArrayList<>();
     private int entitiesNumber = 0;
+    private PhysicEntity sprite;
     HashMap<PhysicEntity, ArrayList<PhysicEntity>>collidedEntities = new HashMap<>();
 
+    public PhysicsEngine(ArrayList<PhysicEntity> entities, int entitiesNumber, PhysicEntity sprite, HashMap<PhysicEntity, ArrayList<PhysicEntity>> collidedEntities) {
+        this.entities = entities;
+        this.entitiesNumber = entitiesNumber;
+        this.sprite = sprite;
+        this.collidedEntities = collidedEntities;
+    }
+
+    public PhysicsEngine() {
+        this.entities= new ArrayList<>();
+        this.entitiesNumber=0;
+        this.collidedEntities=new HashMap<>();
+        this.sprite= new PhysicEntity(0,0,10,10,20,Direction.RIGHT,true,true);
+    }
 
     public ArrayList<PhysicEntity> getEntities() {
         return entities;
+    }
+
+    public PhysicEntity getSprite() {
+        return sprite;
     }
 
     public void setEntities(ArrayList<PhysicEntity> entities) {

@@ -7,7 +7,11 @@ import gameengine.physicsengine.Direction;
 import gameengine.physicsengine.PhysicEntity;
 import gameengine.physicsengine.PhysicsEngine;
 
+import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -28,7 +32,23 @@ public class GameCore {
         return graphicEngine;
     }
 
+    public GraphicEntity physicToGraphic(PhysicEntity entity) throws IOException {
 
+        Image image = null;
+
+        if(entity.isMovable()){
+            if (entity.isSolid()){
+                switch (entity.getDirection()){
+                    case UP :  image= ImageIO.read(new File("src\\main\\resources\\Images\\PAC5.png"));break;
+                    case DOWN:  image= ImageIO.read(new File("src\\main\\resources\\Images\\PAC1.png"));break;
+                    case LEFT: image= ImageIO.read(new File("src\\main\\resources\\Images\\PAC4.png"));break;
+                    case RIGHT: image= ImageIO.read(new File("src\\main\\resources\\Images\\PAC3.png"));break;
+                }
+            }
+        }
+        GraphicEntity graphicEntity= new GraphicEntity(entity.getX(),entity.getY(),image);
+        return graphicEntity;
+    }
     public PhysicsEngine getPhysicsEngine() {
         return physicsEngine;
     }
