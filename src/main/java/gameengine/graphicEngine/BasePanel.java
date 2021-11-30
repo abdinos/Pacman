@@ -11,8 +11,9 @@ import java.util.List;
 public class BasePanel extends JPanel {
     private List<GraphicEntity> graphicEntities;
 
-    public BasePanel(){
+    public BasePanel(int width , int height){
         graphicEntities = new ArrayList<>();
+        setPreferredSize(new Dimension(width,height));
     }
 
     public List<GraphicEntity> getGraphicEntities() {

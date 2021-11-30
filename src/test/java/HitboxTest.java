@@ -42,7 +42,7 @@ class HitboxTest {
     }
     @Test
     public void iscollidingTest4() {
-        assertTrue(physicEntity1.getHitbox().intersects(physicEntity2.getHitbox()), physicEntity1 + " " + physicEntity2);
+        assertFalse(physicEntity1.getHitbox().intersects(physicEntity2.getHitbox()), physicEntity1 + " " + physicEntity2);
 
 }
 }

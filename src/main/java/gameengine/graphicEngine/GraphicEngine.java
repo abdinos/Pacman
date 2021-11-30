@@ -17,7 +17,7 @@ public class GraphicEngine {
         this.frame = new JFrame();
         frame.setSize(width,height);
         frame.setTitle("PACMAN!");
-        this.basePanel = new BasePanel();
+        this.basePanel = new BasePanel(width,height);
         frame.setLayout(new BorderLayout());
         //frame.getContentPane().add(basePanel,BorderLayout.CENTER);
         frame.add(basePanel);
