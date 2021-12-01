@@ -3,9 +3,11 @@ package gameengine.gamecore;
 
 import gameengine.graphicEngine.GraphicEngine;
 import gameengine.graphicEngine.GraphicEntity;
+import gameengine.input.InputEngine;
 import gameengine.physicsengine.Direction;
 import gameengine.physicsengine.PhysicEntity;
 import gameengine.physicsengine.PhysicsEngine;
+import gameplay.GamePlay;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -19,12 +21,19 @@ public class GameCore {
     public PhysicsEngine physicsEngine;
     private ArrayList<GenericEntity> genericEntities;
     private final int CONVERSION_UNIT;
+    private InputEngine input;
 
     public GameCore(int width, int height, int unit) {
         this.graphicEngine = new GraphicEngine(width, height);
         this.physicsEngine = new PhysicsEngine();
         this.genericEntities = new ArrayList<>();
+
         this.CONVERSION_UNIT = unit;
+        this.input= new InputEngine(null,this.graphicEngine.getFrame(),this);
+    }
+
+    public InputEngine getInput() {
+        return input;
     }
 
     public GraphicEngine getGraphicEngine() {
@@ -103,13 +112,27 @@ public class GameCore {
         graphicEngine.repaint();
     }
 
+    public GenericEntity getPac(){
+        for (GenericEntity entity:getGenericEntities()){
+            if (entity.getId()==1991){
+                return entity;
+            }
+        }
+        return null;
+    }
+
     public static void main(String[] args) throws IOException {
         GameCore gameCore = new GameCore(600,600,20);
-        GenericEntity entity = new GenericEntity(new PhysicEntity(1,1,40,40,40,Direction.UP,true,true),new GraphicEntity(1,1, ImageIO.read(new File("src\\main\\resources\\Images\\PAC1.png")),40,40));
+        GenericEntity entity = new GenericEntity(new PhysicEntity(1,1,40,40,5,Direction.DOWN,true,true),new GraphicEntity(1  ,1, ImageIO.read(new File("src\\main\\resources\\Images\\PAC1.png")),40,40));
         GenericEntity entity1 = new GenericEntity(new PhysicEntity(400,400,40,70,2,null,false,true),new GraphicEntity(400,400, ImageIO.read(new File("src\\main\\resources\\Images\\WALL.png")),40,70));
-        gameCore.addGenericEntity(entity1);
         gameCore.addGenericEntity(entity);
+        gameCore.addGenericEntity(entity1);
+    //    GamePlay gamePlay = new GamePlay(29,20,1,gameCore);
+    //    gamePlay.generateMap("FinalMap.txt");
+        //    gamePlay.resolveMap();
         gameCore.computeCollisions();
+        gameCore.getInput().setSprite(gameCore.getGenericEntities().get(0));
+    //    gameCore.getInput().setSprite(gameCore.getPac());
         gameCore.refresh();
     }
 }

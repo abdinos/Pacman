@@ -19,6 +19,10 @@ public class GenericEntity {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public PhysicEntity getPhysicEntity() {
         return physicEntity;
     }

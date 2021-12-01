@@ -27,7 +27,7 @@ public class PhysicEntity {
         return (int)hitbox.getWidth();
     }
 
-    public double getHeight() {
+    public int getHeight() {
         return (int) hitbox.getHeight();
     }
 
@@ -105,21 +105,14 @@ public class PhysicEntity {
     }
 
     public void move() {
-            switch (direction) {
-                case UP:
-                    this.setY(this.getY() + this.getVelocity());
-                    break;
-                case DOWN:
-                    this.setY(this.getY() - this.getVelocity());
-                    break;
-                case LEFT:
-                    this.setX((this.getX() - this.getVelocity()));
-                    break;
-                case RIGHT:
-                    this.setX((this.getX() + this.getVelocity()));
-                    break;
-                default:
+        switch (direction) {
+            case UP -> this.setY(this.getY() - this.getVelocity());
+            case DOWN -> this.setY(this.getY() + this.getVelocity());
+            case LEFT -> this.setX((this.getX() - this.getVelocity()));
+            case RIGHT -> this.setX((this.getX() + this.getVelocity()));
+            default -> {
             }
+        }
     }
 
     public void moveToWantedDirection(Direction direction) {

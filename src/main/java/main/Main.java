@@ -38,9 +38,9 @@ public class Main {
         frame.add(panel);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);*/
-        GamePlay gamePlay = new GamePlay(18,17,16,600,600);
-        gamePlay.generateMap("Map");
-        gamePlay.resolveMap();
+      //  GamePlay gamePlay = new GamePlay(18,17,16,600,600);
+      //  gamePlay.generateMap("MapFinal.txt");
+      //  gamePlay.resolveMap();
 
     }
     }
