@@ -49,28 +49,28 @@ public class InputEngine implements KeyListener {
 
         switch(key) {
             case KeyEvent.VK_UP:
-                if (getSprite().getPhysicEntity().getY() - getSprite().getPhysicEntity().getVelocity()>=0)
+                //if (getSprite().getPhysicEntity().getY() - getSprite().getPhysicEntity().getVelocity()>=0)
 
                     getSprite().getPhysicEntity().setDirection(Direction.UP);
                 gameCore.refresh();
 
                 break;
             case KeyEvent.VK_DOWN:
-                if (getSprite().getPhysicEntity().getY() + getSprite().getPhysicEntity().getVelocity()<gameCore.getGraphicEngine().getBasePanel().getHeight()-(getSprite().getPhysicEntity().getHeight()+1))
+                //if (getSprite().getPhysicEntity().getY() + getSprite().getPhysicEntity().getVelocity()<gameCore.getGraphicEngine().getBasePanel().getHeight()-(getSprite().getPhysicEntity().getHeight()+1))
 
                     getSprite().getPhysicEntity().setDirection(Direction.DOWN);
                 gameCore.refresh();
                 break;
 
             case KeyEvent.VK_LEFT:
-                if ((getSprite().getPhysicEntity().getX() - getSprite().getPhysicEntity().getVelocity())>=0)
+                //if ((getSprite().getPhysicEntity().getX() - getSprite().getPhysicEntity().getVelocity())>=0)
 
                     getSprite().getPhysicEntity().setDirection(Direction.LEFT);
                 gameCore.refresh();
 
                 break;
             case KeyEvent.VK_RIGHT:
-                if ((getSprite().getPhysicEntity().getX() + getSprite().getPhysicEntity().getVelocity())<gameCore.getGraphicEngine().getBasePanel().getWidth()-(getSprite().getPhysicEntity().getWidth()))
+                //if ((getSprite().getPhysicEntity().getX() + getSprite().getPhysicEntity().getVelocity())<gameCore.getGraphicEngine().getBasePanel().getWidth()-(getSprite().getPhysicEntity().getWidth()))
 
                     getSprite().getPhysicEntity().setDirection(Direction.RIGHT);
                 gameCore.refresh();

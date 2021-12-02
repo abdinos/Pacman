@@ -17,6 +17,23 @@ public class Pacman extends GenericEntity {
     public Pacman(PhysicEntity physicEntity, GraphicEntity graphicEntity) {
         super(physicEntity, graphicEntity);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
 
 

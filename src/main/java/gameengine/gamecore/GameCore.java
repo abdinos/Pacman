@@ -127,7 +127,7 @@ public class GameCore {
         GenericEntity entity1 = new GenericEntity(new PhysicEntity(400,400,40,70,2,null,false,true),new GraphicEntity(400,400, ImageIO.read(new File("src\\main\\resources\\Images\\WALL.png")),40,70));
        // gameCore.addGenericEntity(entity);
         //gameCore.addGenericEntity(entity1);
-     GamePlay gamePlay = new GamePlay(29,20,1,gameCore);
+     GamePlay gamePlay = new GamePlay(20,20,1,gameCore);
      gamePlay.generateMap("FinalMap.txt");
      gamePlay.resolveMap();
      gameCore.computeCollisions();

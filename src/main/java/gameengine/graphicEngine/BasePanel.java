@@ -35,7 +35,7 @@ public class BasePanel extends JPanel {
         graphicEntities.clear();
     }
     public void addEntity(GraphicEntity entity){
-        System.out.println("Ajout Entité "+entity.getX()+" "+entity.getY());
+
         graphicEntities.add(entity);
 
     }
@@ -52,7 +52,6 @@ public class BasePanel extends JPanel {
         graphic.setColor(Color.black);
         graphic.fillRect(0,0,this.getWidth(),this.getHeight());
         for (GraphicEntity genericEntity:graphicEntities){
-            System.out.println("********"+genericEntity.getX()+"$$$$$$"+genericEntity.getY());
             graphic.drawImage(genericEntity.getImage(),genericEntity.getX(),
                     genericEntity.getY(),genericEntity.getWidth(),genericEntity.getHeight(),null);
 
