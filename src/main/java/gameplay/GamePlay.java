@@ -115,18 +115,18 @@ public class GamePlay {
                             break;
                         case "F":
         //                    GraphicEntity entity2= new GraphicEntity(i*gameCore.graphicEngine.getBasePanel().getWidth()/getMapData()[0].length,j*gameCore.graphicEngine.getBasePanel().getHeight()/getMapData().length,ImageIO.read(new File("src\\main\\resources\\Images\\MELON.png")));
-                            GenericEntity entity2 = new GenericEntity(new PhysicEntity(i*gameCore.graphicEngine.getBasePanel().getWidth()/getMapData()[0].length,j*gameCore.graphicEngine.getBasePanel().getHeight()/getMapData().length,gameCore.graphicEngine.getBasePanel().getWidth()/getMapData()[0].length-5,gameCore.graphicEngine.getBasePanel().getHeight()/getMapData().length-5,20,null,false,true),new GraphicEntity(i*gameCore.graphicEngine.getBasePanel().getWidth()/getMapData()[0].length,j*gameCore.graphicEngine.getBasePanel().getHeight()/getMapData().length,ImageIO.read(new File("src\\main\\resources\\Images\\MELON.png")),gameCore.graphicEngine.getBasePanel().getWidth()/getMapData()[0].length-5,gameCore.graphicEngine.getBasePanel().getHeight()/getMapData().length-5));
+                            GenericEntity entity2 = new GenericEntity(new PhysicEntity(i*gameCore.graphicEngine.getBasePanel().getWidth()/getMapData()[0].length,j*gameCore.graphicEngine.getBasePanel().getHeight()/getMapData().length,gameCore.graphicEngine.getBasePanel().getWidth()/getMapData()[0].length-5,gameCore.graphicEngine.getBasePanel().getHeight()/getMapData().length-5,20,null,false,false),new GraphicEntity(i*gameCore.graphicEngine.getBasePanel().getWidth()/getMapData()[0].length,j*gameCore.graphicEngine.getBasePanel().getHeight()/getMapData().length,ImageIO.read(new File("src\\main\\resources\\Images\\MELON.png")),gameCore.graphicEngine.getBasePanel().getWidth()/getMapData()[0].length-5,gameCore.graphicEngine.getBasePanel().getHeight()/getMapData().length-5));
         //                    entity2.setWidth(gameCore.graphicEngine.getBasePanel().getWidth()/getMapData()[0].length-5);
         //                    entity2.setHeight(gameCore.graphicEngine.getBasePanel().getHeight()/getMapData().length-5);
                             gameCore.addGenericEntity(entity2);
                             break;
                         case "P":
-                            Image img3=ImageIO.read(new File("src\\main\\resources\\Images\\APPLE.png"));
+                            Image img3=ImageIO.read(new File("src\\main\\resources\\Images\\PAC1.png"));
                             int width3=gameCore.graphicEngine.getBasePanel().getWidth()/getMapData()[0].length-5;
                             int height3=gameCore.graphicEngine.getBasePanel().getHeight()/getMapData().length-5;
                             int x3=i*gameCore.graphicEngine.getBasePanel().getWidth()/getMapData()[0].length;
                             int y3=j*gameCore.graphicEngine.getBasePanel().getHeight()/getMapData().length;
-                            GenericEntity entity3= new GenericEntity(new PhysicEntity(x3,y3,width3,height3,20, Direction.RIGHT,true,false),new GraphicEntity(x3,y3,img3,width3,height3));
+                            GenericEntity entity3= new GenericEntity(new PhysicEntity(x3,y3,width3,height3,9, Direction.RIGHT,true,false),new GraphicEntity(x3,y3,img3,width3,height3));
                             entity3.setId(1991);
                             gameCore.addGenericEntity(entity3);
                             break;

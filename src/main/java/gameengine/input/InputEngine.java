@@ -51,39 +51,28 @@ public class InputEngine implements KeyListener {
             case KeyEvent.VK_UP:
                 if (getSprite().getPhysicEntity().getY() - getSprite().getPhysicEntity().getVelocity()>=0)
 
-                    getSprite().getPhysicEntity().moveToWantedDirection(Direction.UP);
-
+                    getSprite().getPhysicEntity().setDirection(Direction.UP);
                 gameCore.refresh();
+
                 break;
             case KeyEvent.VK_DOWN:
                 if (getSprite().getPhysicEntity().getY() + getSprite().getPhysicEntity().getVelocity()<gameCore.getGraphicEngine().getBasePanel().getHeight()-(getSprite().getPhysicEntity().getHeight()+1))
 
-                    getSprite().getPhysicEntity().moveToWantedDirection(Direction.DOWN);
-
+                    getSprite().getPhysicEntity().setDirection(Direction.DOWN);
                 gameCore.refresh();
                 break;
 
             case KeyEvent.VK_LEFT:
                 if ((getSprite().getPhysicEntity().getX() - getSprite().getPhysicEntity().getVelocity())>=0)
 
-                    getSprite().getPhysicEntity().moveToWantedDirection(Direction.LEFT);
-
+                    getSprite().getPhysicEntity().setDirection(Direction.LEFT);
                 gameCore.refresh();
+
                 break;
             case KeyEvent.VK_RIGHT:
                 if ((getSprite().getPhysicEntity().getX() + getSprite().getPhysicEntity().getVelocity())<gameCore.getGraphicEngine().getBasePanel().getWidth()-(getSprite().getPhysicEntity().getWidth()))
 
-                    getSprite().getPhysicEntity().moveToWantedDirection(Direction.RIGHT);
-
-
-
-            /**    sprite.setDirection(Direction.RIGHT);
-                sprite.move();
-                try {
-                    gameCore.getGraphicEngine().addEntity(gameCore.physicToGraphic(sprite));
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }*/
+                    getSprite().getPhysicEntity().setDirection(Direction.RIGHT);
                 gameCore.refresh();
                 break;
             /**    case KeyEvent.VK_M:

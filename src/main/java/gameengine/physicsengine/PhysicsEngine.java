@@ -59,6 +59,7 @@ public class PhysicsEngine {
            collidedEntities.put(physicEntity,collisions);
         }
     }
+
     public void predictPosition(){
         for (PhysicEntity physicEntity :entities){
             if (physicEntity.isMovable()){
