@@ -121,12 +121,12 @@ public class GamePlay {
                             gameCore.addGenericEntity(entity2);
                             break;
                         case "P":
-                            Image img3=ImageIO.read(new File("src\\main\\resources\\Images\\APPLE.png"));
+                            Image img3=ImageIO.read(new File("src\\main\\resources\\Images\\PAC1.png"));
                             int width3=gameCore.graphicEngine.getBasePanel().getWidth()/getMapData()[0].length-5;
                             int height3=gameCore.graphicEngine.getBasePanel().getHeight()/getMapData().length-5;
                             int x3=i*gameCore.graphicEngine.getBasePanel().getWidth()/getMapData()[0].length;
                             int y3=j*gameCore.graphicEngine.getBasePanel().getHeight()/getMapData().length;
-                            GenericEntity entity3= new GenericEntity(new PhysicEntity(x3,y3,width3,height3,5, Direction.RIGHT,true,false),new GraphicEntity(x3,y3,img3,width3,height3));
+                            GenericEntity entity3= new GenericEntity(new PhysicEntity(x3,y3,width3,height3,9, Direction.RIGHT,true,false),new GraphicEntity(x3,y3,img3,width3,height3));
                             entity3.setId(1991);
                             gameCore.addGenericEntity(entity3);
                             break;
