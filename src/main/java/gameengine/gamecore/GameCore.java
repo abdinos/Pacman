@@ -29,7 +29,7 @@ public class GameCore {
         this.genericEntities = new ArrayList<>();
 
         this.CONVERSION_UNIT = unit;
-        this.input= new InputEngine(null,this.graphicEngine.getFrame(),this);
+        this.input= new InputEngine(null,this);
     }
 
     public InputEngine getInput() {
@@ -99,7 +99,7 @@ public class GameCore {
         return collidingGenericEntities;
     }
     public void refresh(){
-        physicsEngine.predictPosition();
+    //    physicsEngine.predictPosition();
         for (PhysicEntity physicEntity:physicsEngine.getEntities()){
             if (physicEntity.isMovable()){
                 GraphicEntity graphicEntity = getGenericFromPhysic(physicEntity).getGraphicEntity();
@@ -125,14 +125,14 @@ public class GameCore {
         GameCore gameCore = new GameCore(600,600,20);
         GenericEntity entity = new GenericEntity(new PhysicEntity(1,1,40,40,5,Direction.DOWN,true,true),new GraphicEntity(1  ,1, ImageIO.read(new File("src\\main\\resources\\Images\\PAC1.png")),40,40));
         GenericEntity entity1 = new GenericEntity(new PhysicEntity(400,400,40,70,2,null,false,true),new GraphicEntity(400,400, ImageIO.read(new File("src\\main\\resources\\Images\\WALL.png")),40,70));
-        gameCore.addGenericEntity(entity);
-        gameCore.addGenericEntity(entity1);
-    //    GamePlay gamePlay = new GamePlay(29,20,1,gameCore);
-    //    gamePlay.generateMap("FinalMap.txt");
-        //    gamePlay.resolveMap();
-        gameCore.computeCollisions();
-        gameCore.getInput().setSprite(gameCore.getGenericEntities().get(0));
-    //    gameCore.getInput().setSprite(gameCore.getPac());
+    //    gameCore.addGenericEntity(entity);
+    //    gameCore.addGenericEntity(entity1);
+        GamePlay gamePlay = new GamePlay(29,20,1,gameCore);
+        gamePlay.generateMap("FinalMap.txt");
+        gamePlay.resolveMap();
+    //    gameCore.computeCollisions();
+    //    gameCore.getInput().setSprite(gameCore.getGenericEntities().get(0));
+        gameCore.getInput().setSprite(gameCore.getPac());
         gameCore.refresh();
     }
 }

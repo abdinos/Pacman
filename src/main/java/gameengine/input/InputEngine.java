@@ -12,12 +12,10 @@ import java.io.IOException;
 
 public class InputEngine implements KeyListener {
     private GenericEntity sprite;
-    private JFrame frame;
-    private GameCore gameCore;
-    public InputEngine(GenericEntity genericEntity, JFrame frame,GameCore gameCore){
+    private final GameCore gameCore;
+    public InputEngine(GenericEntity genericEntity,GameCore gameCore){
         this.sprite=genericEntity;
-        this.frame= frame;
-        frame.addKeyListener(this);
+        gameCore.getGraphicEngine().getFrame().addKeyListener(this);
         this.gameCore=gameCore;
     }
 
@@ -51,14 +49,14 @@ public class InputEngine implements KeyListener {
             case KeyEvent.VK_UP:
                 if (getSprite().getPhysicEntity().getY() - getSprite().getPhysicEntity().getVelocity()>=0)
 
-                    getSprite().getPhysicEntity().moveToWantedDirection(Direction.UP);
+                    getSprite().getPhysicEntity().setDirection(Direction.UP);
 
                 gameCore.refresh();
                 break;
             case KeyEvent.VK_DOWN:
-                if (getSprite().getPhysicEntity().getY() + getSprite().getPhysicEntity().getVelocity()<gameCore.getGraphicEngine().getBasePanel().getHeight()-(getSprite().getPhysicEntity().getHeight()+1))
+                if (getSprite().getPhysicEntity().getY() + getSprite().getPhysicEntity().getVelocity()<gameCore.getGraphicEngine().getFrame().getHeight()-(getSprite().getPhysicEntity().getHeight()+1))
 
-                    getSprite().getPhysicEntity().moveToWantedDirection(Direction.DOWN);
+                    getSprite().getPhysicEntity().setDirection(Direction.DOWN);
 
                 gameCore.refresh();
                 break;
@@ -66,14 +64,14 @@ public class InputEngine implements KeyListener {
             case KeyEvent.VK_LEFT:
                 if ((getSprite().getPhysicEntity().getX() - getSprite().getPhysicEntity().getVelocity())>=0)
 
-                    getSprite().getPhysicEntity().moveToWantedDirection(Direction.LEFT);
+                    getSprite().getPhysicEntity().setDirection(Direction.LEFT);
 
                 gameCore.refresh();
                 break;
             case KeyEvent.VK_RIGHT:
-                if ((getSprite().getPhysicEntity().getX() + getSprite().getPhysicEntity().getVelocity())<gameCore.getGraphicEngine().getBasePanel().getWidth()-(getSprite().getPhysicEntity().getWidth()))
+                if ((getSprite().getPhysicEntity().getX() + getSprite().getPhysicEntity().getVelocity())<gameCore.getGraphicEngine().getFrame().getWidth()-(getSprite().getPhysicEntity().getWidth()))
 
-                    getSprite().getPhysicEntity().moveToWantedDirection(Direction.RIGHT);
+                    getSprite().getPhysicEntity().setDirection(Direction.RIGHT);
 
 
 
