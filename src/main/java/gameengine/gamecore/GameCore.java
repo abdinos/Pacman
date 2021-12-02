@@ -77,10 +77,11 @@ public class GameCore {
     }
 
     public void removeGenericEntity(GenericEntity genericEntity){
-        physicsEngine.removeEntity(genericEntity.getPhysicEntity());
-        graphicEngine.removeEntity(genericEntity.getGraphicEntity());
-        genericEntities.remove(genericEntity);
-
+        if(genericEntity!=null) {
+            physicsEngine.removeEntity(genericEntity.getPhysicEntity());
+            graphicEngine.removeEntity(genericEntity.getGraphicEntity());
+            genericEntities.remove(genericEntity);
+        }
     }
     public HashMap<GenericEntity,ArrayList<GenericEntity>> computeCollisions(){
 
@@ -122,7 +123,7 @@ public class GameCore {
     }
 
     public static void main(String[] args) throws IOException {
-        GameCore gameCore = new GameCore(600,600,20);
+        GameCore gameCore = new GameCore(588,588,20);
         GenericEntity entity = new GenericEntity(new PhysicEntity(1,1,40,40,5,Direction.DOWN,true,true),new GraphicEntity(1  ,1, ImageIO.read(new File("src\\main\\resources\\Images\\PAC1.png")),40,40));
         GenericEntity entity1 = new GenericEntity(new PhysicEntity(400,400,40,70,2,null,false,true),new GraphicEntity(400,400, ImageIO.read(new File("src\\main\\resources\\Images\\WALL.png")),40,70));
        // gameCore.addGenericEntity(entity);

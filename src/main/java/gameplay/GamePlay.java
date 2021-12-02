@@ -96,14 +96,12 @@ public class GamePlay {
                             int height=gameCore.graphicEngine.getBasePanel().getHeight()/getMapData().length;
                             int x= i*gameCore.graphicEngine.getBasePanel().getWidth()/getMapData()[0].length;
                             int y=j*gameCore.graphicEngine.getBasePanel().getHeight()/getMapData().length;
-                            System.out.println(img.getWidth(null)+"********"+width);
-                            System.out.println(img.getHeight(null)+"$$$$$$$$"+height);
                             GenericEntity entity= new GenericEntity(new PhysicEntity(x,y,width,height,0,null,false,true),new GraphicEntity(x,y,img,width,height));
                  //           GraphicEntity entity= new GraphicEntity(i*gameCore.graphicEngine.getBasePanel().getWidth()/getMapData()[0].length,j*gameCore.graphicEngine.getBasePanel().getHeight()/getMapData().length,ImageIO.read(new File("src\\main\\resources\\Images\\WALL.png")));
                             gameCore.addGenericEntity(entity);
                             break;
                         case "B":
-                            Image img1=ImageIO.read(new File("src\\main\\resources\\Images\\BELL.png"));
+                            Image img1=ImageIO.read(new File("src\\main\\resources\\Images\\BLOCK.png"));
                             int width1=gameCore.graphicEngine.getBasePanel().getWidth()/getMapData()[0].length-5;
                             int height1=gameCore.graphicEngine.getBasePanel().getHeight()/getMapData().length-5;
                             int x1=i*gameCore.graphicEngine.getBasePanel().getWidth()/getMapData()[0].length;
@@ -122,7 +120,6 @@ public class GamePlay {
                             Image img2=ImageIO.read(new File("src\\main\\resources\\Images\\MELON.png"));
                             GenericEntity entity2 = new GenericEntity(new PhysicEntity(x2,y2,width2,height2,0,null,false,false),new GraphicEntity(x2,y2,img2,width2,height2));
                             gameCore.addGenericEntity(entity2);
-                            System.out.println("FRUITY"+x2+ "yyy"+ y2);
                             break;
                         case "P":
                             Image img3=ImageIO.read(new File("src\\main\\resources\\Images\\PAC1.png"));
@@ -133,7 +130,6 @@ public class GamePlay {
                             int velocity = (gameCore.graphicEngine.getBasePanel().getWidth()/getMapData()[0].length+gameCore.graphicEngine.getBasePanel().getHeight()/getMapData().length)/2;
                             GenericEntity entity3= new GenericEntity(new PhysicEntity(x3,y3,width3,height3,velocity, Direction.RIGHT,true,false),new GraphicEntity(x3,y3,img3,width3,height3));
                             entity3.setId(1991);
-                            System.out.println("PAAAAC"+x3+"PPPPP"+y3);
                             gameCore.addGenericEntity(entity3);
                             break;
                         default:

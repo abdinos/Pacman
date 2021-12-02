@@ -51,8 +51,15 @@ public class InputEngine implements KeyListener {
             case KeyEvent.VK_UP:
                 //if (getSprite().getPhysicEntity().getY() - getSprite().getPhysicEntity().getVelocity()>=0)
 
-                    getSprite().getPhysicEntity().setDirection(Direction.UP);
+                getSprite().getPhysicEntity().setDirection(Direction.UP);
                 gameCore.refresh();
+                if(gameCore.physicsEngine.getCollidedEntities().containsKey(getSprite().getPhysicEntity())){
+                        for (PhysicEntity  fruit : gameCore.physicsEngine.getCollidedEntities().get(getSprite().getPhysicEntity())) {
+                            if (!fruit.isSolid() )
+                                gameCore.removeGenericEntity(gameCore.getGenericFromPhysic(fruit));
+                        }
+
+                }
 
                 break;
             case KeyEvent.VK_DOWN:
@@ -60,6 +67,12 @@ public class InputEngine implements KeyListener {
 
                     getSprite().getPhysicEntity().setDirection(Direction.DOWN);
                 gameCore.refresh();
+                if(gameCore.physicsEngine.getCollidedEntities().containsKey(getSprite().getPhysicEntity())){
+                        for (PhysicEntity  fruit : gameCore.physicsEngine.getCollidedEntities().get(getSprite().getPhysicEntity())) {
+                            if (!fruit.isSolid() && fruit != null)
+                                gameCore.removeGenericEntity(gameCore.getGenericFromPhysic(fruit));
+                        }
+                }
                 break;
 
             case KeyEvent.VK_LEFT:
@@ -67,6 +80,13 @@ public class InputEngine implements KeyListener {
 
                     getSprite().getPhysicEntity().setDirection(Direction.LEFT);
                 gameCore.refresh();
+                if(gameCore.physicsEngine.getCollidedEntities().containsKey(getSprite().getPhysicEntity())){
+                        for (PhysicEntity  fruit : gameCore.physicsEngine.getCollidedEntities().get(getSprite().getPhysicEntity())) {
+                            if (!fruit.isSolid() && fruit != null)
+                                gameCore.removeGenericEntity(gameCore.getGenericFromPhysic(fruit));
+                    }
+
+                }
 
                 break;
             case KeyEvent.VK_RIGHT:
@@ -74,6 +94,13 @@ public class InputEngine implements KeyListener {
 
                     getSprite().getPhysicEntity().setDirection(Direction.RIGHT);
                 gameCore.refresh();
+                if(gameCore.physicsEngine.getCollidedEntities().containsKey(getSprite().getPhysicEntity())){
+                        for (PhysicEntity  fruit : gameCore.physicsEngine.getCollidedEntities().get(getSprite().getPhysicEntity())) {
+                            if (!fruit.isSolid() && fruit != null)
+                                gameCore.removeGenericEntity(gameCore.getGenericFromPhysic(fruit));
+                        }
+
+                }
                 break;
             /**    case KeyEvent.VK_M:
              // couper la musique
