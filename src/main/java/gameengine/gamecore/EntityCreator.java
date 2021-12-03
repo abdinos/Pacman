@@ -31,8 +31,8 @@ public class EntityCreator {
         this.image = image;
         this.conversionUnit = conversionUnit;
     }
-    public Game.GenericEntity createEntity(){
-        Game.GenericEntity entity = new Game.GenericEntity(new PhysicEntity(x,y,width,height,velocity,direction,isMovable,isSolid),new GraphicEntity(x*conversionUnit,y*conversionUnit,image));
+    public GenericEntity createEntity(){
+        GenericEntity entity = new GenericEntity(new PhysicEntity(x,y,width,height,velocity,direction,isMovable,isSolid),new GraphicEntity(x*conversionUnit,y*conversionUnit,image));
     return entity;
     }
 

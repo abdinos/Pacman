@@ -1,6 +1,7 @@
 package gameengine.input;
 
 import gameengine.gamecore.GameCore;
+import gameengine.gamecore.GenericEntity;
 import gameengine.physicsengine.Direction;
 import gameengine.physicsengine.PhysicEntity;
 import gameplay.Game;
@@ -10,21 +11,21 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class InputEngine implements KeyListener {
-    private Game.GenericEntity sprite;
+    private GenericEntity sprite;
     private JFrame frame;
     private GameCore gameCore;
-    public InputEngine(Game.GenericEntity genericEntity, JFrame frame, GameCore gameCore){
+    public InputEngine(GenericEntity genericEntity, JFrame frame, GameCore gameCore){
         this.sprite=genericEntity;
         this.frame= frame;
         frame.addKeyListener(this);
         this.gameCore=gameCore;
     }
 
-    public Game.GenericEntity getSprite() {
+    public GenericEntity getSprite() {
         return sprite;
     }
 
-    public void setSprite(Game.GenericEntity sprite) {
+    public void setSprite(GenericEntity sprite) {
         this.sprite = sprite;
         
 
@@ -46,19 +47,14 @@ public class InputEngine implements KeyListener {
         // REbloquera instantanément
       //  pacman.setBloque(false);
 
+
         switch(key) {
             case KeyEvent.VK_UP:
                 //if (getSprite().getPhysicEntity().getY() - getSprite().getPhysicEntity().getVelocity()>=0)
 
                 getSprite().getPhysicEntity().setDirection(Direction.UP);
                 gameCore.refresh();
-                if(gameCore.physicsEngine.getCollidedEntities().containsKey(getSprite().getPhysicEntity())){
-                        for (PhysicEntity  fruit : gameCore.physicsEngine.getCollidedEntities().get(getSprite().getPhysicEntity())) {
-                            if (!fruit.isSolid() )
-                                gameCore.removeGenericEntity(gameCore.getGenericFromPhysic(fruit));
-                        }
-
-                }
+                gameCore.resolveCollision(getSprite());
 
                 break;
             case KeyEvent.VK_DOWN:
@@ -66,12 +62,7 @@ public class InputEngine implements KeyListener {
 
                     getSprite().getPhysicEntity().setDirection(Direction.DOWN);
                 gameCore.refresh();
-                if(gameCore.physicsEngine.getCollidedEntities().containsKey(getSprite().getPhysicEntity())){
-                        for (PhysicEntity  fruit : gameCore.physicsEngine.getCollidedEntities().get(getSprite().getPhysicEntity())) {
-                            if (!fruit.isSolid() && fruit != null)
-                                gameCore.removeGenericEntity(gameCore.getGenericFromPhysic(fruit));
-                        }
-                }
+                gameCore.resolveCollision(getSprite());
                 break;
 
             case KeyEvent.VK_LEFT:
@@ -79,13 +70,7 @@ public class InputEngine implements KeyListener {
 
                     getSprite().getPhysicEntity().setDirection(Direction.LEFT);
                 gameCore.refresh();
-                if(gameCore.physicsEngine.getCollidedEntities().containsKey(getSprite().getPhysicEntity())){
-                        for (PhysicEntity  fruit : gameCore.physicsEngine.getCollidedEntities().get(getSprite().getPhysicEntity())) {
-                            if (!fruit.isSolid() && fruit != null)
-                                gameCore.removeGenericEntity(gameCore.getGenericFromPhysic(fruit));
-                    }
-
-                }
+                gameCore.resolveCollision(getSprite());
 
                 break;
             case KeyEvent.VK_RIGHT:
@@ -93,20 +78,8 @@ public class InputEngine implements KeyListener {
 
                     getSprite().getPhysicEntity().setDirection(Direction.RIGHT);
                 gameCore.refresh();
-                if(gameCore.physicsEngine.getCollidedEntities().containsKey(getSprite().getPhysicEntity())){
-                        for (PhysicEntity  fruit : gameCore.physicsEngine.getCollidedEntities().get(getSprite().getPhysicEntity())) {
-                            if (!fruit.isSolid() && fruit != null)
-                                gameCore.removeGenericEntity(gameCore.getGenericFromPhysic(fruit));
-                        }
-
-                }
+                gameCore.resolveCollision(getSprite());
                 break;
-            /**    case KeyEvent.VK_M:
-             // couper la musique
-             break;
-             case KeyEvent.VK_Q:
-             Jeu.arretImmediat = true;
-             Jeu.finDuJeu = true*/
         }
     }
 
@@ -114,4 +87,5 @@ public class InputEngine implements KeyListener {
     public void keyReleased(KeyEvent e) {
 
     }
+
 }

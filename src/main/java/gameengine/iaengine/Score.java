@@ -22,6 +22,7 @@ public class Score {
     public int getScore(){
         return this.score;
     }
+    public void setScore(int score){this.score=score;}
     public String getName(){
         return this.name;
     }

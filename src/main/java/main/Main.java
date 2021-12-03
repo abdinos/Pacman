@@ -17,9 +17,10 @@ public class Main {
         gamePlay.generateMap("FinalMap.txt");
         gamePlay.resolveMap();
         gameCore.computeCollisions();
-        gameCore.getInput().setSprite(gameCore.getGenericEntities().get(0));
         gameCore.getInput().setSprite(gameCore.getPac());
         gameCore.refresh();
+
+
     }
 }
 

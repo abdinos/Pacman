@@ -3,11 +3,12 @@ package gameengine.gamecore;
 
 import gameengine.graphicEngine.GraphicEngine;
 import gameengine.graphicEngine.GraphicEntity;
+import gameengine.iaengine.Score;
 import gameengine.input.InputEngine;
 import gameengine.physicsengine.Direction;
 import gameengine.physicsengine.PhysicEntity;
 import gameengine.physicsengine.PhysicsEngine;
-import gameplay.GamePlay;
+
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -22,11 +23,13 @@ public class GameCore {
     private ArrayList<GenericEntity> genericEntities;
     private final int CONVERSION_UNIT;
     private InputEngine input;
+    private Score score;
 
     public GameCore(int width, int height, int unit) {
         this.graphicEngine = new GraphicEngine(width, height);
         this.physicsEngine = new PhysicsEngine();
         this.genericEntities = new ArrayList<>();
+        this.score= new Score("PLAYER",0);
 
         this.CONVERSION_UNIT = unit;
         this.input = new InputEngine(null, this.graphicEngine.getFrame(), this);
@@ -34,6 +37,10 @@ public class GameCore {
 
     public InputEngine getInput() {
         return input;
+    }
+
+    public Score getScore() {
+        return score;
     }
 
     public GraphicEngine getGraphicEngine() {
@@ -80,6 +87,8 @@ public class GameCore {
             physicsEngine.removeEntity(genericEntity.getPhysicEntity());
             graphicEngine.removeEntity(genericEntity.getGraphicEntity());
             genericEntities.remove(genericEntity);
+            getScore().setScore(score.getScore()+1);
+
         }
     }
 
@@ -105,10 +114,11 @@ public class GameCore {
         for (PhysicEntity physicEntity : physicsEngine.getEntities()) {
             if (physicEntity.isMovable()) {
                 GraphicEntity graphicEntity = getGenericFromPhysic(physicEntity).getGraphicEntity();
-                System.out.println(graphicEntity.getX() + " " + graphicEntity.getY());
+  //              System.out.println(graphicEntity.getX() + " " + graphicEntity.getY());
                 graphicEntity.setX(physicEntity.getX());
                 graphicEntity.setY(physicEntity.getY());
-                System.out.println(graphicEntity.getX() + " " + graphicEntity.getY());
+  //              System.out.println(graphicEntity.getX() + " " + graphicEntity.getY());
+                System.out.println(getScore().getScore());
             }
         }
         graphicEngine.repaint();
@@ -121,6 +131,20 @@ public class GameCore {
             }
         }
         return null;
+    }
+    public void resolveCollision(GenericEntity entity){
+
+        if(getPhysicsEngine().getCollidedEntities().containsKey(entity.getPhysicEntity())){
+            for (PhysicEntity  fruit :getPhysicsEngine().getCollidedEntities().get(entity.getPhysicEntity())) {
+                if (!fruit.isSolid() ) {
+                    removeGenericEntity(getGenericFromPhysic(fruit));
+
+
+                }
+            }
+
+        }
+
     }
 }
 
