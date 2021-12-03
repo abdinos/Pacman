@@ -1,6 +1,5 @@
-import gameengine.physicsengine.Direction;
-import gameengine.physicsengine.PhysicEntity;
-import gameengine.physicsengine.PhysicsEngine;
+import engine.physicsengine.*;
+import entity.IEntity;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -8,18 +7,18 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PhysicEngineTest {
-    PhysicsEngine physicsEngine = new PhysicsEngine();
-    PhysicEntity physicEntity1 =  new PhysicEntity(20,20,30,40,0,null,false,true);
-    PhysicEntity physicEntity2 = new PhysicEntity(20,40,90,100,0,null,false,true);
-    PhysicEntity physicEntity3 = new PhysicEntity(20,30,40,80,0,null,false,true);
-    PhysicEntity physicEntity4 = new PhysicEntity(-80,-60,1,1,0,null,false,true);
-    PhysicEntity physicEntity5 = new PhysicEntity(15,1,20,20,30, Direction.UP,true,true);
+    MovablePhysicsEngine physicsEngine = new MovablePhysicsEngine();
+    IEntity physicEntity1 =  new StaticPhysicEntity(20,20,30,40);
+    IEntity physicEntity2 = new StaticPhysicEntity(20,40,90,100);
+    IEntity physicEntity3 = new StaticPhysicEntity(20,30,40,80);
+    IEntity physicEntity4 = new StaticPhysicEntity(-80,-60,1,1);
+    MovablePhysicEntity physicEntity5 = new MovablePhysicEntity(15,1,20,20,30, Direction.UP,true);
     @Test
     public void entitiesCollisionsTest(){
         physicsEngine.addEntity(physicEntity1);
         physicsEngine.addEntity(physicEntity2);
         physicsEngine.addEntity(physicEntity3);
-        ArrayList<PhysicEntity> collidingEntities = physicsEngine.entitiesCollision(physicEntity3);
+        ArrayList<IEntity> collidingEntities = physicsEngine.entitiesCollision(physicEntity3);
         assertTrue(collidingEntities.contains(physicEntity2)&&collidingEntities.contains(physicEntity1)&& collidingEntities.size() ==2,"size "+collidingEntities.size()+" entities "+collidingEntities.toString());
     }
     @Test
@@ -28,7 +27,7 @@ class PhysicEngineTest {
         physicsEngine.addEntity(physicEntity2);
         physicsEngine.addEntity(physicEntity3);
         physicsEngine.addEntity(physicEntity4);
-        ArrayList<PhysicEntity> collidingEntities = physicsEngine.entitiesCollision(physicEntity3);
+        ArrayList<IEntity> collidingEntities = physicsEngine.entitiesCollision(physicEntity3);
         assertFalse(collidingEntities.contains(physicEntity2)&&collidingEntities.contains(physicEntity1)&& collidingEntities.contains(physicEntity4)&& collidingEntities.size() ==3,"size "+collidingEntities.size()+" entities "+collidingEntities.toString());
     }
     @Test
@@ -37,7 +36,7 @@ class PhysicEngineTest {
         physicsEngine.addEntity(physicEntity2);
         physicsEngine.addEntity(physicEntity3);
         physicsEngine.addEntity(physicEntity4);
-        ArrayList<PhysicEntity> collidingentities = new ArrayList<>();
+        ArrayList<IEntity> collidingentities = new ArrayList<>();
         collidingentities.add(physicEntity1);
         collidingentities.add(physicEntity2);
         physicsEngine.setcollisionData();
@@ -51,7 +50,7 @@ class PhysicEngineTest {
         physicsEngine.addEntity(physicEntity3);
         physicsEngine.addEntity(physicEntity4);
         physicsEngine.addEntity(physicEntity5);
-        ArrayList<PhysicEntity> collidingentities = new ArrayList<>();
+        ArrayList<IEntity> collidingentities = new ArrayList<>();
         collidingentities.add(physicEntity1);
         collidingentities.add(physicEntity2);
         collidingentities.add(physicEntity3);

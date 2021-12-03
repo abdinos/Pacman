@@ -1,11 +1,9 @@
-import gameengine.physicsengine.Direction;
-import gameengine.physicsengine.PhysicEntity;
+/**import engine.physicsengine.Direction;
+import engine.physicsengine.StaticPhysicEntity;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class DirectionTest {
-    private PhysicEntity testPhysicEntity1 = new PhysicEntity(4, 3, 40,20,15,null,true,true);
+    private StaticPhysicEntity testPhysicEntity1 = new StaticPhysicEntity(4, 3, 40,20,15,null,true,true);
 
 
     @Test
@@ -31,4 +29,4 @@ class DirectionTest {
     }
 
 
-}
+}*/

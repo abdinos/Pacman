@@ -1,13 +1,16 @@
-import gameengine.physicsengine.Direction;
-import gameengine.physicsengine.PhysicEntity;
+import engine.physicsengine.Direction;
+import engine.physicsengine.MovablePhysicEntity;
+import engine.physicsengine.StaticPhysicEntity;
+import entity.IEntity;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class HitboxTest {
-    PhysicEntity physicEntity1 = new PhysicEntity(3, 3, 15, 20, 20, null,true,true);
-    PhysicEntity physicEntity2 = new PhysicEntity(23, 23, 15, 25, 25, null,true,true);
-    PhysicEntity physicEntity3 = new PhysicEntity(50, 40, 20, 30, 0, null,false,true);
+    MovablePhysicEntity physicEntity1 = new MovablePhysicEntity(3, 3, 15, 20, 20, null,true);
+    MovablePhysicEntity physicEntity2 = new MovablePhysicEntity(23, 23, 15, 25, 25, null,true);
+    StaticPhysicEntity physicEntity3 = new StaticPhysicEntity(50, 40, 20, 30);
 
     @Test
     public void iscollidingTest() {
