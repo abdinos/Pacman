@@ -29,7 +29,7 @@ public class GameCore {
         this.genericEntities = new ArrayList<>();
 
         this.CONVERSION_UNIT = unit;
-        this.input= new InputEngine(null,this.graphicEngine.getFrame(),this);
+        this.input = new InputEngine(null, this.graphicEngine.getFrame(), this);
     }
 
     public InputEngine getInput() {
@@ -50,9 +50,8 @@ public class GameCore {
     }
 
 
-
-    public GenericEntity getGenericFromPhysic(PhysicEntity physicEntity){
-        for (GenericEntity genericEntity: genericEntities){
+    public GenericEntity getGenericFromPhysic(PhysicEntity physicEntity) {
+        for (GenericEntity genericEntity : genericEntities) {
             if (genericEntity.getPhysicEntity().equals(physicEntity))
                 return genericEntity;
         }
@@ -76,65 +75,53 @@ public class GameCore {
         graphicEngine.addEntity(genericEntity.getGraphicEntity());
     }
 
-    public void removeGenericEntity(GenericEntity genericEntity){
-        if(genericEntity!=null) {
+    public void removeGenericEntity(GenericEntity genericEntity) {
+        if (genericEntity != null) {
             physicsEngine.removeEntity(genericEntity.getPhysicEntity());
             graphicEngine.removeEntity(genericEntity.getGraphicEntity());
             genericEntities.remove(genericEntity);
         }
     }
-    public HashMap<GenericEntity,ArrayList<GenericEntity>> computeCollisions(){
 
-        HashMap<GenericEntity,ArrayList<GenericEntity>> collidingGenericEntities = new HashMap<>();
-        HashMap<PhysicEntity,ArrayList<PhysicEntity>> collidingPhysicEntities = physicsEngine.getCollidedEntities();
+    public HashMap<GenericEntity, ArrayList<GenericEntity>> computeCollisions() {
 
-        for (PhysicEntity physicEntity :collidingPhysicEntities.keySet()){
+        HashMap<GenericEntity, ArrayList<GenericEntity>> collidingGenericEntities = new HashMap<>();
+        HashMap<PhysicEntity, ArrayList<PhysicEntity>> collidingPhysicEntities = physicsEngine.getCollidedEntities();
+
+        for (PhysicEntity physicEntity : collidingPhysicEntities.keySet()) {
             GenericEntity temp = getGenericFromPhysic(physicEntity);
-            collidingGenericEntities.put(temp,new ArrayList<>());
+            collidingGenericEntities.put(temp, new ArrayList<>());
 
-            for (PhysicEntity collidingPhysicEntity : collidingPhysicEntities.get(physicEntity)){
+            for (PhysicEntity collidingPhysicEntity : collidingPhysicEntities.get(physicEntity)) {
                 collidingGenericEntities.get(getGenericFromPhysic(physicEntity)).add(getGenericFromPhysic(collidingPhysicEntity));
             }
 
         }
         return collidingGenericEntities;
     }
-    public void refresh(){
+
+    public void refresh() {
         physicsEngine.predictPosition();
-        for (PhysicEntity physicEntity:physicsEngine.getEntities()){
-            if (physicEntity.isMovable()){
+        for (PhysicEntity physicEntity : physicsEngine.getEntities()) {
+            if (physicEntity.isMovable()) {
                 GraphicEntity graphicEntity = getGenericFromPhysic(physicEntity).getGraphicEntity();
-                System.out.println(graphicEntity.getX() +" "+ graphicEntity.getY());
+                System.out.println(graphicEntity.getX() + " " + graphicEntity.getY());
                 graphicEntity.setX(physicEntity.getX());
                 graphicEntity.setY(physicEntity.getY());
-                System.out.println(graphicEntity.getX() +" "+ graphicEntity.getY());
+                System.out.println(graphicEntity.getX() + " " + graphicEntity.getY());
             }
         }
         graphicEngine.repaint();
     }
 
-    public GenericEntity getPac(){
-        for (GenericEntity entity:getGenericEntities()){
-            if (entity.getId()==1991){
+    public GenericEntity getPac() {
+        for (GenericEntity entity : getGenericEntities()) {
+            if (entity.getId() == 1991) {
                 return entity;
             }
         }
         return null;
     }
-
-    public static void main(String[] args) throws IOException {
-        GameCore gameCore = new GameCore(588,588,20);
-        GenericEntity entity = new GenericEntity(new PhysicEntity(1,1,40,40,5,Direction.DOWN,true,true),new GraphicEntity(1  ,1, ImageIO.read(new File("src\\main\\resources\\Images\\PAC1.png")),40,40));
-        GenericEntity entity1 = new GenericEntity(new PhysicEntity(400,400,40,70,2,null,false,true),new GraphicEntity(400,400, ImageIO.read(new File("src\\main\\resources\\Images\\WALL.png")),40,70));
-       // gameCore.addGenericEntity(entity);
-        //gameCore.addGenericEntity(entity1);
-     GamePlay gamePlay = new GamePlay(20,20,1,gameCore);
-     gamePlay.generateMap("FinalMap.txt");
-     gamePlay.resolveMap();
-     gameCore.computeCollisions();
-     gameCore.getInput().setSprite(gameCore.getGenericEntities().get(0));
-     gameCore.getInput().setSprite(gameCore.getPac());
-     gameCore.refresh();
-    }
 }
+
 

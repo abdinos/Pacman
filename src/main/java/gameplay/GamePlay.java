@@ -91,7 +91,7 @@ public class GamePlay {
                     String element =getMapData()[i][j];
                     switch (element){
                         case "W":
-                            Image img=ImageIO.read(new File("src\\main\\resources\\Images\\WALL.png"));
+                            Image img=ImageIO.read(Objects.requireNonNull(GamePlay.class.getClassLoader().getResourceAsStream("WALL.png")));
                             int width=gameCore.graphicEngine.getBasePanel().getWidth()/getMapData()[0].length;
                             int height=gameCore.graphicEngine.getBasePanel().getHeight()/getMapData().length;
                             int x= i*gameCore.graphicEngine.getBasePanel().getWidth()/getMapData()[0].length;
@@ -101,7 +101,7 @@ public class GamePlay {
                             gameCore.addGenericEntity(entity);
                             break;
                         case "B":
-                            Image img1=ImageIO.read(new File("src\\main\\resources\\Images\\BLOCK.png"));
+                            Image img1=ImageIO.read(Objects.requireNonNull(GamePlay.class.getClassLoader().getResourceAsStream("BLOCK.png")));
                             int width1=gameCore.graphicEngine.getBasePanel().getWidth()/getMapData()[0].length-5;
                             int height1=gameCore.graphicEngine.getBasePanel().getHeight()/getMapData().length-5;
                             int x1=i*gameCore.graphicEngine.getBasePanel().getWidth()/getMapData()[0].length;
@@ -117,12 +117,12 @@ public class GamePlay {
                             int y2=j*gameCore.graphicEngine.getBasePanel().getHeight()/getMapData().length;
                             int width2=gameCore.graphicEngine.getBasePanel().getWidth()/getMapData()[0].length-5;
                             int height2=gameCore.graphicEngine.getBasePanel().getHeight()/getMapData().length-5;
-                            Image img2=ImageIO.read(new File("src\\main\\resources\\Images\\MELON.png"));
+                            Image img2=ImageIO.read(Objects.requireNonNull(GamePlay.class.getClassLoader().getResourceAsStream("MELON.png")));
                             GenericEntity entity2 = new GenericEntity(new PhysicEntity(x2,y2,width2,height2,0,null,false,false),new GraphicEntity(x2,y2,img2,width2,height2));
                             gameCore.addGenericEntity(entity2);
                             break;
                         case "P":
-                            Image img3=ImageIO.read(new File("src\\main\\resources\\Images\\PAC1.png"));
+                            Image img3=ImageIO.read(Objects.requireNonNull(GamePlay.class.getClassLoader().getResourceAsStream("PAC1.png")));
                             int width3=gameCore.graphicEngine.getBasePanel().getWidth()/getMapData()[0].length-5;
                             int height3=gameCore.graphicEngine.getBasePanel().getHeight()/getMapData().length-5;
                             int x3=i*gameCore.graphicEngine.getBasePanel().getWidth()/getMapData()[0].length;
