@@ -1,9 +1,6 @@
 package gameengine.graphicEngine;
 
-import gameengine.gamecore.GenericEntity;
-
 import javax.swing.*;
-import javax.swing.text.html.parser.Entity;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +10,7 @@ public class BasePanel extends JPanel {
 
     public BasePanel(int width , int height){
         graphicEntities = new ArrayList<>();
-        setPreferredSize(new Dimension(width,height));
+        setSize(width,height);
     }
 
     public List<GraphicEntity> getGraphicEntities() {

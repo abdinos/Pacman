@@ -1,10 +1,9 @@
 package gameplay;
 
-import gameengine.gamecore.GenericEntity;
 import gameengine.graphicEngine.GraphicEntity;
 import gameengine.physicsengine.PhysicEntity;
 
-public class PacGum extends GenericEntity {
+public class PacGum extends Game.GenericEntity {
     String use = "";
     int id= 0;
 

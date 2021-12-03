@@ -1,31 +1,30 @@
 package gameengine.input;
 
 import gameengine.gamecore.GameCore;
-import gameengine.gamecore.GenericEntity;
 import gameengine.physicsengine.Direction;
 import gameengine.physicsengine.PhysicEntity;
+import gameplay.Game;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.io.IOException;
 
 public class InputEngine implements KeyListener {
-    private GenericEntity sprite;
+    private Game.GenericEntity sprite;
     private JFrame frame;
     private GameCore gameCore;
-    public InputEngine(GenericEntity genericEntity, JFrame frame,GameCore gameCore){
+    public InputEngine(Game.GenericEntity genericEntity, JFrame frame, GameCore gameCore){
         this.sprite=genericEntity;
         this.frame= frame;
         frame.addKeyListener(this);
         this.gameCore=gameCore;
     }
 
-    public GenericEntity getSprite() {
+    public Game.GenericEntity getSprite() {
         return sprite;
     }
 
-    public void setSprite(GenericEntity sprite) {
+    public void setSprite(Game.GenericEntity sprite) {
         this.sprite = sprite;
         
 
