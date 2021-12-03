@@ -1,10 +1,9 @@
 package gameplay;
 
-import gameengine.gamecore.GenericEntity;
 import gameengine.graphicEngine.GraphicEntity;
 import gameengine.physicsengine.PhysicEntity;
 
-public class Ghost extends GenericEntity {
+public class Ghost extends Game.GenericEntity {
 
     int id;
     int status;

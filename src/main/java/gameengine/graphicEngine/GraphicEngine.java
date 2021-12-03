@@ -18,11 +18,14 @@ public class GraphicEngine {
         frame.setSize(width,height);
         frame.setTitle("PACMAN!");
         this.basePanel = new BasePanel(width,height);
-        frame.setLayout(new BorderLayout());
+        frame.setLayout(null);
+        basePanel.setBounds(0,0,width,height);
         //frame.getContentPane().add(basePanel,BorderLayout.CENTER);
         frame.add(basePanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         frame.setVisible(true);
+
     }
 
     public JFrame getFrame() {

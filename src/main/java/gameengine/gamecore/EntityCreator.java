@@ -2,8 +2,8 @@ package gameengine.gamecore;
 
 import gameengine.graphicEngine.GraphicEntity;
 import gameengine.physicsengine.Direction;
-import gameengine.physicsengine.Hitbox;
 import gameengine.physicsengine.PhysicEntity;
+import gameplay.Game;
 
 import java.awt.*;
 
@@ -31,8 +31,8 @@ public class EntityCreator {
         this.image = image;
         this.conversionUnit = conversionUnit;
     }
-    public GenericEntity createEntity(){
-        GenericEntity entity = new GenericEntity(new PhysicEntity(x,y,width,height,velocity,direction,isMovable,isSolid),new GraphicEntity(x*conversionUnit,y*conversionUnit,image));
+    public Game.GenericEntity createEntity(){
+        Game.GenericEntity entity = new Game.GenericEntity(new PhysicEntity(x,y,width,height,velocity,direction,isMovable,isSolid),new GraphicEntity(x*conversionUnit,y*conversionUnit,image));
     return entity;
     }
 

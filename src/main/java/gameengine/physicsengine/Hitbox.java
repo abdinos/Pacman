@@ -17,10 +17,10 @@ public class Hitbox extends Rectangle {
 
     public boolean intersects(Hitbox other)
     {
-        return this.getX() <= other.getX() + other.getWidth() &&
-                this.getX() + this.getWidth() >= other.getX() &&
-                this.getY() <= other.getY() + other.getHeight() &&
-                this.getHeight() + this.getY() >= other.getY();
+        return this.getX() <= other.getX() + other.getWidth()-3 &&
+                this.getX() + this.getWidth()-3 >= other.getX() &&
+                this.getY() <= other.getY() + other.getHeight()-3 &&
+                this.getHeight()-3 + this.getY() >= other.getY();
     }
 
     public void resize(float percent) {
