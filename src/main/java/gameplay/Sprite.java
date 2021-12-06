@@ -6,7 +6,7 @@ import gameengine.physicsengine.PhysicEntity;
 
 import java.awt.*;
 
-public class Pacman extends GenericEntity {
+public class Sprite extends GenericEntity {
     private int x;
     private int y;
     private int width;
@@ -16,7 +16,7 @@ public class Pacman extends GenericEntity {
     private int speed;
 
 
-    public Pacman(PhysicEntity physicEntity, GraphicEntity graphicEntity) {
+    public Sprite(PhysicEntity physicEntity, GraphicEntity graphicEntity) {
         super(physicEntity, graphicEntity);
         }
 

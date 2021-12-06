@@ -2,15 +2,13 @@ package gameplay;
 
 import gameengine.gamecore.GameCore;
 import gameengine.graphicEngine.BasePanel;
-import gameengine.graphicEngine.GraphicEntity;
-import gameengine.physicsengine.PhysicEntity;
 
 import java.util.ArrayList;
 import java.util.logging.Level;
 
 public class Game {
 
-    Pacman pacman;
+    Sprite sprite;
     ArrayList<Ghost> ghosts;
     Ghost blinky;
     Ghost inky;

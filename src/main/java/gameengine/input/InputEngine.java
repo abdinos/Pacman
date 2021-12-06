@@ -3,8 +3,6 @@ package gameengine.input;
 import gameengine.gamecore.GameCore;
 import gameengine.gamecore.GenericEntity;
 import gameengine.physicsengine.Direction;
-import gameengine.physicsengine.PhysicEntity;
-import gameplay.Game;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;
@@ -40,17 +38,9 @@ public class InputEngine implements KeyListener {
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
 
-        // si le PacMan ne bouge plus à  cause d'un Mur en face de lui, il peut changer de
-        // direction et ne plus être bloqué
-        //
-        // si le PacMan ne bouge plus à  cause d'un Fantome, le Fantome en question le
-        // REbloquera instantanément
-      //  pacman.setBloque(false);
-
 
         switch(key) {
             case KeyEvent.VK_UP:
-                //if (getSprite().getPhysicEntity().getY() - getSprite().getPhysicEntity().getVelocity()>=0)
 
                 getSprite().getPhysicEntity().setDirection(Direction.UP);
                 gameCore.refresh();
@@ -58,7 +48,6 @@ public class InputEngine implements KeyListener {
 
                 break;
             case KeyEvent.VK_DOWN:
-                //if (getSprite().getPhysicEntity().getY() + getSprite().getPhysicEntity().getVelocity()<gameCore.getGraphicEngine().getBasePanel().getHeight()-(getSprite().getPhysicEntity().getHeight()+1))
 
                     getSprite().getPhysicEntity().setDirection(Direction.DOWN);
                 gameCore.refresh();
@@ -66,7 +55,6 @@ public class InputEngine implements KeyListener {
                 break;
 
             case KeyEvent.VK_LEFT:
-                //if ((getSprite().getPhysicEntity().getX() - getSprite().getPhysicEntity().getVelocity())>=0)
 
                     getSprite().getPhysicEntity().setDirection(Direction.LEFT);
                 gameCore.refresh();
@@ -74,8 +62,6 @@ public class InputEngine implements KeyListener {
 
                 break;
             case KeyEvent.VK_RIGHT:
-                //if ((getSprite().getPhysicEntity().getX() + getSprite().getPhysicEntity().getVelocity())<gameCore.getGraphicEngine().getBasePanel().getWidth()-(getSprite().getPhysicEntity().getWidth()))
-
                     getSprite().getPhysicEntity().setDirection(Direction.RIGHT);
                 gameCore.refresh();
                 gameCore.resolveCollision(getSprite());

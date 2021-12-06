@@ -20,7 +20,6 @@ public class GraphicEngine {
         this.basePanel = new BasePanel(width,height);
         frame.setLayout(null);
         basePanel.setBounds(0,0,width,height);
-        //frame.getContentPane().add(basePanel,BorderLayout.CENTER);
         frame.add(basePanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

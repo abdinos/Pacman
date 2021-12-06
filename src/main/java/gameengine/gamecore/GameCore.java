@@ -8,12 +8,7 @@ import gameengine.input.InputEngine;
 import gameengine.physicsengine.Direction;
 import gameengine.physicsengine.PhysicEntity;
 import gameengine.physicsengine.PhysicsEngine;
-
-
-import javax.imageio.ImageIO;
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -114,10 +109,8 @@ public class GameCore {
         for (PhysicEntity physicEntity : physicsEngine.getEntities()) {
             if (physicEntity.isMovable()) {
                 GraphicEntity graphicEntity = getGenericFromPhysic(physicEntity).getGraphicEntity();
-  //              System.out.println(graphicEntity.getX() + " " + graphicEntity.getY());
                 graphicEntity.setX(physicEntity.getX());
                 graphicEntity.setY(physicEntity.getY());
-  //              System.out.println(graphicEntity.getX() + " " + graphicEntity.getY());
                 System.out.println(getScore().getScore());
             }
         }

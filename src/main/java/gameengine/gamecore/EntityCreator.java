@@ -3,7 +3,6 @@ package gameengine.gamecore;
 import gameengine.graphicEngine.GraphicEntity;
 import gameengine.physicsengine.Direction;
 import gameengine.physicsengine.PhysicEntity;
-import gameplay.Game;
 
 import java.awt.*;
 

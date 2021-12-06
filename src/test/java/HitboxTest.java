@@ -12,14 +12,14 @@ class HitboxTest {
     @Test
     public void iscollidingTest() {
         physicEntity1.moveToWantedDirection(Direction.RIGHT);
-        physicEntity1.moveToWantedDirection(Direction.UP);
+        physicEntity1.moveToWantedDirection(Direction.DOWN);
         assertTrue(physicEntity1.getHitbox().intersects(physicEntity2.getHitbox()), physicEntity1 + " " + physicEntity2);
 
     }
     @Test
     public void iscollidingTest2() {
         physicEntity2.moveToWantedDirection(Direction.RIGHT);
-        physicEntity2.moveToWantedDirection(Direction.UP);
+        physicEntity2.moveToWantedDirection(Direction.DOWN);
         assertTrue(physicEntity2.getHitbox().intersects(physicEntity3.getHitbox()), physicEntity2 + " " + physicEntity3);
 
     }

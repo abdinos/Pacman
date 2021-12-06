@@ -44,23 +44,6 @@ class PhysicEngineTest {
         assertEquals(physicsEngine.entitiesCollision(physicEntity3),collidingentities);
 
     }
-    @Test
-    public void predictPositionTest(){
-        physicsEngine.addEntity(physicEntity1);
-        physicsEngine.addEntity(physicEntity2);
-        physicsEngine.addEntity(physicEntity3);
-        physicsEngine.addEntity(physicEntity4);
-        physicsEngine.addEntity(physicEntity5);
-        ArrayList<PhysicEntity> collidingentities = new ArrayList<>();
-        collidingentities.add(physicEntity1);
-        collidingentities.add(physicEntity2);
-        collidingentities.add(physicEntity3);
-        physicsEngine.predictPosition();
-        assertEquals(collidingentities,physicsEngine.getCollidedEntities().get(physicEntity5));
-        assertTrue(physicEntity5.getX() == 15);
-        assertTrue(physicEntity5.getY() == 1);
-    }
-
 
 
 }

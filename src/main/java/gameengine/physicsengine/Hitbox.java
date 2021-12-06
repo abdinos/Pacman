@@ -1,7 +1,6 @@
 package gameengine.physicsengine;
 
 import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Shape;
 
 
 public class Hitbox extends Rectangle {

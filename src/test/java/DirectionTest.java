@@ -22,12 +22,12 @@ class DirectionTest {
     @Test
     public void upMovementTest() {
         testPhysicEntity1.moveToWantedDirection(Direction.UP);
-        assertEquals(18, testPhysicEntity1.getY());
+        assertEquals(-12, testPhysicEntity1.getY());
     }
     @Test
     public void downMovementTest() {
         testPhysicEntity1.moveToWantedDirection(Direction.DOWN);
-        assertEquals(-12, testPhysicEntity1.getY());
+        assertEquals(18, testPhysicEntity1.getY());
     }
 
 

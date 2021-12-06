@@ -8,7 +8,6 @@ import gameengine.physicsengine.PhysicEntity;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
-import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.Scanner;
@@ -97,7 +96,6 @@ public class GamePlay {
                             int x= i*gameCore.graphicEngine.getBasePanel().getWidth()/getMapData()[0].length;
                             int y=j*gameCore.graphicEngine.getBasePanel().getHeight()/getMapData().length;
                             GenericEntity entity= new GenericEntity(new PhysicEntity(x,y,width,height,0,null,false,true),new GraphicEntity(x,y,img,width,height));
-                 //           GraphicEntity entity= new GraphicEntity(i*gameCore.graphicEngine.getBasePanel().getWidth()/getMapData()[0].length,j*gameCore.graphicEngine.getBasePanel().getHeight()/getMapData().length,ImageIO.read(new File("src\\main\\resources\\Images\\WALL.png")));
                             gameCore.addGenericEntity(entity);
                             break;
                         case "B":
@@ -106,10 +104,7 @@ public class GamePlay {
                             int height1=gameCore.graphicEngine.getBasePanel().getHeight()/getMapData().length-5;
                             int x1=i*gameCore.graphicEngine.getBasePanel().getWidth()/getMapData()[0].length;
                             int y1=j*gameCore.graphicEngine.getBasePanel().getHeight()/getMapData().length;
-         //                   GraphicEntity entity1= new GraphicEntity(i*gameCore.graphicEngine.getBasePanel().getWidth()/getMapData()[0].length,j*gameCore.graphicEngine.getBasePanel().getHeight()/getMapData().length,img1);
                             GenericEntity entity1= new GenericEntity(new PhysicEntity(x1,y1,width1,height1,2,null,false,true),new GraphicEntity(x1,y1,img1,width1,height1));
-        //                    entity1.setWidth(gameCore.graphicEngine.getBasePanel().getWidth()/getMapData()[0].length-5);
-         //                   entity1.setHeight(gameCore.graphicEngine.getBasePanel().getHeight()/getMapData().length-5);
                             gameCore.addGenericEntity(entity1);
                             break;
                         case "F":
